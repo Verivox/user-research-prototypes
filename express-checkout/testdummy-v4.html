@@ -14,6 +14,19 @@
   <!-- Verivox DS Tokens (CSS Custom Properties) -->
   <link rel="stylesheet" href="https://js.vxcdn.com/vx/ds-tokens/4/tokens.css" />
   <link rel="stylesheet" href="https://js.vxcdn.com/vx/ds-tokens/latest/ds-typography.css" />
+
+  <!-- Verivox Selawik Font  -->
+  <link rel="preload" href="https://static.verivox.de/assets/fonts/de/selawik-100.woff" as="font" crossorigin="anonymous">
+  <link rel="preload" href="https://static.verivox.de/assets/fonts/de/selawik-400.woff" as="font" crossorigin="anonymous">
+  <link rel="preload" href="https://static.verivox.de/assets/fonts/de/selawik-700.woff" as="font" crossorigin="anonymous">
+  <style>
+      @font-face{font-family:Selawik;src:url(https://static.verivox.de/assets/fonts/de/selawik-400.woff) format("woff"),url(https://static.verivox.de/assets/fonts/de/selawik-400.woff2) format("woff2");font-weight:400;font-style:normal;font-display:optional}
+      @font-face{font-family:Selawik;src:url(https://static.verivox.de/assets/fonts/de/selawik-100.woff) format("woff"),url(https://static.verivox.de/assets/fonts/de/selawik-100.woff2) format("woff2");font-weight:100;font-style:normal;font-display:optional}
+      @font-face{font-family:Selawik;src:url(https://static.verivox.de/assets/fonts/de/selawik-700.woff) format("woff"),url(https://static.verivox.de/assets/fonts/de/selawik-700.woff2) format("woff2");font-weight:700;font-style:normal;font-display:optional}
+      @font-face{font-family:VerivoxIcons;src:url(https://js.vxcdn.com/vx/icons/latest/VerivoxIcons.woff) format("woff"),url(https://js.vxcdn.com/vx/icons/latest/VerivoxIcons.woff2) format("woff2"),url(https://js.vxcdn.com/vx/icons/latest/VerivoxIcons.ttf) format("truetype");font-weight:400;font-style:normal}
+      @font-face{font-family:verivox;src:url(https://js.vxcdn.com/vx/icons/latest/VerivoxIcons.woff) format("woff"),url(https://js.vxcdn.com/vx/icons/latest/VerivoxIcons.woff2) format("woff2"),url(https://js.vxcdn.com/vx/icons/latest/VerivoxIcons.ttf) format("truetype");font-weight:400;font-style:normal}
+  </style>
+
   <style>
     * {
       margin: 0;
@@ -348,7 +361,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 var(--ds-spacing-xs);
-      
+
       background-color: var(--ds-background-neutral-muted);
     }
     .drawer-title {
@@ -360,7 +373,7 @@
       padding: var(--ds-spacing-xs) var(--ds-spacing-xs) 0 var(--ds-spacing-xs);
     }
     .drawer-back-button {
-      
+
       align-items: center;
       justify-content: center;
       gap: var(--ds-spacing-xxxs);
@@ -421,7 +434,7 @@
       gap: var(--ds-spacing-m);
       padding: var(--ds-spacing-xxs) 0;
       border-radius: var(--ds-radius-l);
-      
+
       border-left: 4px solid transparent;
       transition: all 0.2s ease;
     }
@@ -435,11 +448,11 @@
         padding: var(--ds-spacing-xxxs);
     }
     .drawer-list-item.highlight .drawer-item-label {
-      
+
       font-weight: var(--ds-font-weight-m);
     }
     .drawer-list-item.highlight .drawer-item-value {
-      
+
       font-weight: var(--ds-font-weight-l);
     }
     .drawer-item-label {
@@ -923,9 +936,9 @@
     </div>
   </div>
     <h2 class="drawer-title" id="drawerTitle">Tarif- und Preisdetails</h2>
-    
+
     <div class="drawer-content" id="drawerContent">
-        
+
       <!-- Wird dynamisch gefüllt -->
     </div>
   </div>
@@ -1342,7 +1355,7 @@
                             { label: 'Deckungssumme', value: 'unbegrenzt' },
                             { label: 'Kautionsdarlehen', value: 'bis zu 1 Mio EUR' },
                             { label: 'Kündigungsfristen', value: 'zum Vertragsablauf, Kündigungsfrist 3 Monate' }
-                        ] 
+                        ]
                     },
                     {
                         title: 'Versicherte Personen',
@@ -1391,7 +1404,7 @@
                         { label: 'Photovoltaikanlagen', value: 'bis zu 20.000 EUR' }
 
                         ]
-                    }                  
+                    }
                 ]
               },
               {
@@ -1699,7 +1712,7 @@
         const card = document.createElement('div');
         card.className = 'step-card editing scroll-target';
         card.dataset.step = step.id;
-        
+
         if (step.isConsentStep) {
           card.innerHTML = `
             <ds-ribbon variant="success" position="top-left">
@@ -1893,9 +1906,9 @@
       renderDrawer() {
         const drawerTitle = document.getElementById('drawerTitle');
         const drawerContent = document.getElementById('drawerContent');
-        
+
         drawerTitle.textContent = this.config.drawerConfig.title;
-        
+
         // ✅ ACCORDIONS MIT DS-ACCORDION-ITEM
         /*const sectionsHTML = `
           <ds-accordion>
@@ -1927,7 +1940,7 @@
                     <div class="drawer-section-content">
 			            ${section.subsections.map(subsections => `
 				            <div class="drawer-subsection-item">
-                                
+
 					            <div class="drawer-subsection-item-label">${subsections.title}</div>
                                     ${subsections.items.map(item => `
                                         <div class="drawer-list-item ${item.highlight ? 'highlight' : ''}">
@@ -1944,12 +1957,12 @@
               .join('')}
           </ds-accordion>
         `;
-        
+
         drawerContent.innerHTML = sectionsHTML;
       }
     }
 
-    
+
 
     // ===== DRAWER MANAGER =====
     class DrawerManager {
