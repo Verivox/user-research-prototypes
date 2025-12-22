@@ -81,6 +81,10 @@ const addProtectionLayer = function () {
             document.getElementById('pw-input').focus();
         }
     });
+
+    // Hide "pw-form". "checkQueryParameterAndMaybeHideProtectionLayer" will then eventually show the form when the check of query parameters was no sucess
+    document.getElementById('pw-form').style.display = 'none';
+
 };
 
 function loadSha256Lib(callback) {
@@ -98,6 +102,9 @@ function checkQueryParameterAndMaybeHideProtectionLayer() {
     const params = new URLSearchParams(window.location.search);
     if (params.get('code') && isCodeWordCorrect(params.get('code'), EXPECTED_HASH)) {
         hideProtectionLayer();
+    } else {
+        // Show "pw-form" to ask user to enter code via form
+        document.getElementById('pw-form').style.display = 'flex';
     }
 }
 
