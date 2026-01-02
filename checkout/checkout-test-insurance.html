@@ -47,7 +47,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background-color: white;
+      background-color: var(--ds-background-white);
       border-bottom: 1px solid var(--ds-border-neutral-light);
     }
     .header-top {
@@ -220,7 +220,7 @@
     .checkout-wrapper {
       display: grid;
       grid-template-columns: 1fr 400px;
-      gap: var(--ds-spacing-xs);
+      gap: var(--ds-spacing-m);
       max-width: 980px;
       margin: 0 auto;
     }
@@ -242,6 +242,131 @@
       top: 200px;
       height: fit-content;
     }
+    /* ===== STICKY CHECKOUT FOOTER ===== */
+
+    .sticky-checkout-footer-wrapper {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 500;
+        background: var(--ds-background-white);
+        border-top: 4px solid var(--ds-border-neutral-regular);
+        box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+
+
+    }
+    .sticky-checkout-footer {
+        padding: var(--ds-spacing-xs) 0 var(--ds-spacing-m) 0;
+        margin: 0 auto;
+        max-width: 980px;
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        gap: var(--ds-spacing-m);
+        align-items: start;
+        animation: slideUp 0.3s ease;
+
+    }
+    .sticky-checkout-footer.show {
+        display: none;
+    }
+
+
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.sticky-footer-content {
+  /*display: flex;*/
+  align-items: center;
+  gap: var(--ds-spacing-m);
+}
+
+.sticky-footer-button {
+  flex: 1;
+  min-height: 48px;
+}
+
+.sticky-footer-button ds-button {
+  width: 100%;
+  min-height: 48px;
+}
+
+.sticky-footer-button ds-button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.sticky-footer-product-wrapper {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: var(--ds-spacing-xs);
+}
+
+.sticky-footer-product {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-xxxs);
+  text-align: right;
+}
+
+.sticky-footer-provider-name {
+  font-size: var(--ds-font-size-m);
+  font-weight: var(--ds-font-weight-m);
+  color: var(--ds-font-headline-neutral-regular);
+}
+
+.sticky-footer-price-amount {
+  font-size: var(--ds-font-size-l);
+  font-weight: var(--ds-font-weight-l);
+  color: var(--ds-font-headline-neutral-regular);
+}
+
+.sticky-footer-price-help {
+  font-size: var(--ds-font-size-s);
+  color: var(--ds-font-text-neutral-regular);
+}
+
+/* Adjust main content to avoid overlap */
+body {
+  padding-bottom: 100px;
+}
+
+body.sticky-footer-visible {
+  padding-bottom: 120px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .sticky-checkout-footer{
+    grid-template-columns: 1fr;
+    gap: var(--ds-spacing-xxs);
+    padding: var(--ds-spacing-s) var(--ds-spacing-s) var(--ds-spacing-xxs) var(--ds-spacing-s);
+  }
+
+    .sticky-checkout-footer.show {
+    grid-template-columns: 1fr;
+    gap: var(--ds-spacing-xxs);
+    padding: var(--ds-spacing-s) var(--ds-spacing-s) var(--ds-spacing-xxs) var(--ds-spacing-s);
+  }
+
+  .sticky-footer-product {
+    text-align: right;
+  }
+
+  body.sticky-footer-visible {
+    padding-bottom: 180px;
+  }
+}
+
     /* ===== PROVIDER BOX ===== */
     .provider-box {
       background: var(--ds-background-white);
@@ -266,7 +391,7 @@
       width: 60px;
       height: 60px;
       border-radius: var(--ds-radius-l);
-      background-color: var(--ds-background-neutral-light);
+      background-color: var(--ds-background-white);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -509,8 +634,8 @@
       transition: all 0.2s ease;
     }
     .drawer-list-item:hover {
-      /*background-color: var(--ds-background-neutral-muted);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);*/
+      background-color: var(--ds-background-white);
+
     }
     .drawer-list-item.highlight {
         background-color: var(--ds-background-brand-light);
@@ -537,6 +662,19 @@
       word-break: break-word;
       line-height: 1.4;
     }
+
+    /* ===== TAB GROUP OVERRIDES ===== */
+    .drawer-section-content {
+        border-top: var(--ds-stroke-m) solid var(--ds-border-neutral-regular);
+    }
+
+
+
+    ds-tab-group::part(tab) {
+        padding: var(--ds-spacing-xxxs) var(--ds-spacing-s) var(--ds-spacing-xxxs) var(--ds-spacing-s);
+        justify-content: end;
+    }
+
     /* ===== STEP CARD STATES ===== */
     .step-card {
       background: var(--ds-background-white);
@@ -547,11 +685,19 @@
       position: relative;
       margin-bottom: var(--ds-spacing-xs);
     }
+
+    .step-card.editing[data-step="9"] {
+        background: none;
+        border: none;
+    }
     .step-card.editing {
-
-
       border: 1px solid var(--ds-border-brand-muted);
       box-shadow: 0px 0px 16px var(--ds-border-neutral-regular);
+    }
+    .step-card.editing[data-step="9"] {
+        background: none;
+        border: none;
+        box-shadow: none;
     }
     .step-card.locked {
       opacity: 0.7;
@@ -749,7 +895,7 @@
         text-align: right;
     }
     .form-actions-provider-name {
-
+        font-size: var(--ds-font-size-m);
     }
     .form-actions-price-amount {
         font-size: var(--ds-font-size-l);
@@ -841,6 +987,134 @@
     .disclaimer-text a:hover {
       opacity: 0.8;
     }
+
+/* ===== COMPLETION MODAL ===== */
+.completion-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.completion-overlay.open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+.completion-modal {
+  background: white;
+  border-radius: var(--ds-radius-xl);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  max-width: 500px;
+  width: 90%;
+  animation: modalSlideIn 0.3s ease;
+  overflow: hidden;
+  text-align: center;
+}
+
+.completion-modal-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ds-spacing-m);
+  padding: var(--ds-spacing-xl) var(--ds-spacing-m) var(--ds-spacing-m) var(--ds-spacing-m);
+  background: linear-gradient(135deg, var(--ds-palette-violet5) 0%, var(--ds-palette-orange10) 100%);
+  border-bottom: 1px solid var(--ds-palette-orange20);
+}
+
+.completion-modal-header .icn {
+  font-size: 64px;
+  color: var(--ds-palette-grey80);
+  animation: checkmarkAnimation 0.6s ease;
+}
+
+@keyframes checkmarkAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.completion-modal-header h2 {
+  margin: 0;
+  font-size: var(--ds-font-size-xl);
+  font-weight: var(--ds-font-weight-l);
+  color: var(--ds-palette-grey80);
+}
+
+.completion-modal-content {
+  padding: var(--ds-spacing-m);
+  color: var(--ds-font-text-neutral-regular);
+  font-size: var(--ds-font-size-m);
+  line-height: 1.6;
+}
+
+.completion-modal-content p {
+  margin: var(--ds-spacing-s) 0;
+}
+
+.completion-modal-content p:first-child {
+  margin-top: 0;
+  font-size: var(--ds-font-size-l);
+  font-weight: var(--ds-font-weight-l);
+  color: var(--ds-font-headline-neutral-regular);
+}
+
+.completion-modal-footer {
+  padding: var(--ds-spacing-m);
+
+
+  display: flex;
+  justify-content: center;
+}
+
+.completion-modal-footer ds-button {
+  min-height: 48px;
+  min-width: 200px;
+}
+
+
+/* ===== CHECKBOX VALIDATION STYLING ===== */
+ds-checkbox[invalid] {
+  --ds-checkbox-border-color: var(--ds-border-danger-regular);
+  --ds-checkbox-error-message-color: var(--ds-font-text-danger-regular);
+}
+
+ds-checkbox[invalid]::after {
+  content: attr(error-message);
+  display: block;
+  font-size: var(--ds-font-size-s);
+  color: var(--ds-font-text-danger-regular);
+  margin-top: var(--ds-spacing-xxxs);
+}
+
+.consent-checkbox-wrapper ds-checkbox[invalid] {
+  border: 1px solid var(--ds-border-danger-regular);
+  border-radius: var(--ds-radius-m);
+
+}
+
+.newsletter-error {
+    color: var(--ds-font-text-danger);
+    font-size: var(--ds-font-size-s);
+}
+
     /* ===== COMPLETED CONTENT ===== */
     .step-completed-content {
       display: none;
@@ -881,6 +1155,30 @@
       text-align: left;
       word-break: break-word;
     }
+
+    /* ===== TOAST ANIMATIONS ===== */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
     /* ===== SUCCESS MESSAGE ===== */
     .success-message {
       display: none;
@@ -1164,6 +1462,88 @@
         font-size: var(--ds-font-size-s);
       }
     }
+
+    /* ===== TEST MODE MODAL ===== */
+.test-mode-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.test-mode-overlay.open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+.test-mode-modal {
+  background: var(--ds-background-white);
+  border-radius: var(--ds-radius-xl);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  max-width: 500px;
+  width: 90%;
+  animation: modalSlideIn 0.3s ease;
+  overflow: hidden;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.test-mode-modal-header {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-spacing-xxs);
+  padding: var(--ds-spacing-xs);
+  background-color: var(--ds-background-info-light);
+  border-bottom: 1px solid var(--ds-border-info);
+}
+
+.test-mode-modal-header .icn {
+  font-size: 24px;
+  color: var(--ds-font-text-info);
+  flex-shrink: 0;
+}
+
+.test-mode-modal-header h2 {
+  margin: 0;
+  font-size: var(--ds-font-size-l);
+  font-weight: var(--ds-font-weight-l);
+  color: var(--ds-font-text-info);
+}
+
+.test-mode-modal-content {
+  padding: var(--ds-spacing-xs) var(--ds-spacing-m);
+  color: var(--ds-font-text-neutral-regular);
+  font-size: var(--ds-font-size-m);
+  line-height: 1.6;
+}
+
+.test-mode-modal-footer {
+  padding: var(--ds-spacing-xs);
+  border-top: 1px solid var(--ds-border-neutral-light);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.test-mode-modal-footer ds-button {
+  min-height: 40px;
+}
   </style>
 </head>
 <body>
@@ -1239,11 +1619,11 @@
   <footer>
     <div class="footer-content">
       <nav class="footer-links">
-        <a href="#" class="footer-link">Datenschutz</a>
-        <a href="#" class="footer-link">AGB</a>
-        <a href="#" class="footer-link">Impressum</a>
-        <a href="#" class="footer-link">Cookies</a>
-        <a href="#" class="footer-link">Verträge kündigen</a>
+        <a href="#" onclick="openTestModeModal(); return false;" class="footer-link">Datenschutz</a>
+        <a href="#" onclick="openTestModeModal(); return false;"class="footer-link">AGB</a>
+        <a href="#" onclick="openTestModeModal(); return false;"class="footer-link">Impressum</a>
+        <a href="#" onclick="openTestModeModal(); return false;"class="footer-link">Cookies</a>
+        <a href="#" onclick="openTestModeModal(); return false;"class="footer-link">Verträge kündigen</a>
       </nav>
     </div>
   </footer>
@@ -1294,6 +1674,200 @@
 
     };
 
+    // ===== SIMPLE TEST MODE MODAL (GANZ OBEN - VOR ALLEM ANDEREN) =====
+function initTestModeModal() {
+  // Erstelle Modal HTML
+  const modalHTML = '<div class="test-mode-overlay" id="testModeOverlay"><div class="test-mode-modal"><div class="test-mode-modal-header"><span class="icn icn-info-filled" aria-hidden="true"></span><h2>Testmodus</h2></div><div class="test-mode-modal-content"><p>Das ist eine <b>Simulation</b> im Rahmen einer Nutzerbefragung. </br>Externe <b>Links und Downloads sind deaktiviert</b>.</p></div><div class="test-mode-modal-footer"><ds-button text="Verstanden" appearance="primary" id="testModeCloseBtn" type="button"></ds-button></div></div></div>';
+  document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+  // Close Button
+  const closeBtn = document.getElementById('testModeCloseBtn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeTestModeModal);
+  }
+
+  // Overlay Click
+  const overlay = document.getElementById('testModeOverlay');
+  if (overlay) {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) {
+        closeTestModeModal();
+      }
+    });
+  }
+
+  // Escape Key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeTestModeModal();
+    }
+  });
+}
+
+// Modal öffnen
+function openTestModeModal() {
+  const overlay = document.getElementById('testModeOverlay');
+  if (overlay) {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    console.log('✓ Test Mode Modal opened');
+  }
+}
+
+// Modal schließen
+function closeTestModeModal() {
+  const overlay = document.getElementById('testModeOverlay');
+  if (overlay) {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    console.log('✓ Test Mode Modal closed');
+  }
+}
+
+// ===== STICKY CHECKOUT FOOTER MANAGER =====
+class StickyCheckoutFooter {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    this.createFooter();
+    this.setupEventListeners();
+    console.log('✓ StickyCheckoutFooter initialized');
+  }
+
+  createFooter() {
+    const footerHTML = `
+    <div class="sticky-checkout-footer-wrapper">
+        <div class="sticky-checkout-footer" id="stickyCheckoutFooter" style="max-width:980px;">
+
+            <div class="sticky-footer-content">
+                <div class="sticky-footer-button">
+                    <ds-button text="Kauf abschließen" appearance="primary" id="stickyCheckoutBtn" type="button" icon-right="check-filled"></ds-button>
+                </div>
+                <div>Kein Risiko - 14 Tage Widerrufsrecht</div>
+            </div>
+            <div class="sticky-footer-product-wrapper">
+                <div class="provider-logo"><img id="stickyProviderLogo"/></div>
+
+                <div class="sticky-footer-product">
+                    <span class="sticky-footer-provider-name" id="stickyProviderName">-</span>
+                    <span class="sticky-footer-price-amount" id="stickyPriceAmount">-</span>
+                    <span class="sticky-footer-price-help" id="stickyPriceHelp">-</span>
+                </div>
+            </div>
+
+        </div>
+    </div>;
+    `
+    document.body.insertAdjacentHTML('beforeend', footerHTML);
+  }
+
+  setupEventListeners() {
+  const stickyBtn = document.getElementById('stickyCheckoutBtn');
+  const self = this;
+
+  if (stickyBtn) {
+    stickyBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+
+        // 🔑 NEUE VALIDIERUNG HIER
+      // Prüfe ob ALLE Steps vor Step 9 completed sind
+      const checkoutManager = window.checkoutManager; // Siehe unten
+      if (!checkoutManager.validateAllStepsCompleted()) {
+        console.log('❌ Validation failed - nicht alle Steps sind abgeschlossen');
+        return; // Verhindere Checkout
+      }
+
+      const step9Card = document.querySelector('[data-step="9"]');
+      if (step9Card) {
+        // Zeige Completion Modal direkt (ohne Checkbox-Validierung)
+        self.showCompletionModal();
+      }
+    });
+  }
+
+  // Beobachte Step 9 Sichtbarkeit
+  setTimeout(() => {
+    self.observeStep9();
+  }, 500);
+}
+
+  observeStep9() {
+    const step9Card = document.querySelector('[data-step="9"]');
+    if (!step9Card) return;
+
+    const self = this;
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        const footer = document.getElementById('stickyCheckoutFooter');
+
+        if (entry.isIntersecting) {
+          footer.classList.remove('show');
+          document.body.classList.remove('sticky-footer-visible');
+          console.log('✓ Last Step visible');
+        } else if (!document.querySelector('[data-step="9"].completed')) {
+          footer.classList.add('show');
+          document.body.classList.add('sticky-footer-visible');
+          self.updateProductInfo();
+          console.log('✓ Last Step not visible');
+        }
+      });
+    }, {
+      rootMargin: '1000px 0px 0px 0px',
+      threshold: 0.7
+    });
+
+    observer.observe(step9Card);
+  }
+
+  updateProductInfo() {
+    const provider = CHECKOUT_CONFIG.providers[0];
+    if (provider) {
+      document.getElementById('stickyProviderLogo').src = provider.logo;
+      document.getElementById('stickyProviderName').textContent = provider.name;
+      document.getElementById('stickyPriceAmount').textContent = provider.price.toFixed(2) + ' €';
+      document.getElementById('stickyPriceHelp').textContent = provider.pricePeriod;
+    }
+  }
+
+  showCompletionModal() {
+    const modalHTML = '<div class="completion-overlay" id="completionOverlay"><div class="completion-modal"><div class="completion-modal-header"><span class="icn icn-check-circle-filled" aria-hidden="true"></span><h2>Checkout abgeschlossen</h2></div><div class="completion-modal-content"><p>Vielen Dank für Ihre Teilnahme!</p><p>Der Checkout-Test ist mit dieser Seite nun abgeschlossen.<br>Sie bekommen in der Realität eine Bestätigungsseite angezeigt. Diese ist jedoch nicht Teil dieser Umfrage.</p></div><div class="completion-modal-footer"><ds-button text="Zur Startseite" appearance="primary" id="completionCloseBtn" type="button"></ds-button></div></div></div>';
+
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+    const overlay = document.getElementById('completionOverlay');
+    const closeBtn = document.getElementById('completionCloseBtn');
+
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    closeBtn.addEventListener('click', function() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+      console.log('Completion Modal closed - Clearing storage and reloading page...');
+
+      localStorage.removeItem('verivox_checkout_data');
+      localStorage.removeItem('verivox_checkout_state');
+      console.log('✓ LocalStorage cleared');
+
+      // Scrolle nach oben UND dann reload
+      window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant' // 👈 Sofort, nicht animiert
+    });
+
+    // Reload nach kurzer Verzögerung
+    setTimeout(function() {
+      location.reload();
+    }, 100);
+    });
+
+    console.log('✓ Checkout completed');
+  }
+}
+
     // ===== CHECKOUT CONFIGURATION (JSON) =====
     const CHECKOUT_CONFIG = {
       steps: [
@@ -1329,6 +1903,7 @@
               type: 'select',
               label: 'Anrede',
               required: true,
+              valid: true,
               placeholder: 'Bitte Anrede wählen',
               options: [
                 { value: '', label: 'Bitte Anrede wählen' },
@@ -1347,6 +1922,7 @@
               inputType: 'text',
               label: 'Vorname',
               required: true,
+              valid: true,
               placeholder: 'Max',
               validation: {
                 validate: (value) => value.length >= 2,
@@ -1359,6 +1935,7 @@
               inputType: 'text',
               label: 'Nachname',
               required: true,
+              valid: true,
               placeholder: 'Mustermann',
               validation: {
                 validate: (value) => value.length >= 2,
@@ -1371,6 +1948,7 @@
               inputType: 'email',
               label: 'E-Mail-Adresse',
               required: true,
+              valid: true,
               placeholder: 'max@example.de',
               validation: {
                 validate: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
@@ -9570,6 +10148,7 @@
                 inputType: 'text',
                 label: 'Postleitzahl',
                 required: true,
+                valid: true,
                 placeholder: '06911',
                 validation: {
                 validate: (value) => value.length >= 2,
@@ -9582,6 +10161,8 @@
                 inputType: 'text',
                 label: 'Ort',
                 required: true,
+                disabled: true,
+                valid: true,
                 placeholder: '',
               validation: {
                 validate: (value) => value.length > 0,
@@ -9593,6 +10174,7 @@
                 type: 'input',
                 inputType: 'text',
                 label: 'Straße',
+                valid: true,
                 required: true,
                 placeholder: '',
                 validation: {
@@ -9605,6 +10187,7 @@
                 type: 'input',
                 inputType: 'text',
                 label: 'Hausnummer',
+                valid: true,
                 required: true,
                 placeholder: '',
                 validation: {
@@ -9618,6 +10201,7 @@
                 inputType: 'text',
                 label: 'Telefonnummer',
                 required: true,
+                valid: true,
                 placeholder: '',
                 validation: {
                 validate: (value) => value.length >= 2,
@@ -9775,7 +10359,8 @@
           fields: [
           {
               id: 'startIns',
-              type: 'date',
+              type: 'input',
+              inputType: 'text',
               label: 'Gewünschter Versicherungsbeginn',
               required: true,
               placeholder: 'TT.MM.JJJJ',
@@ -9786,7 +10371,7 @@
             }
           ],
           completedDataFields: [
-            { label: 'Gewünschter Versicherungseginn', valueId: 'startIns' }
+            { label: 'Gewünschter Versicherungsbeginn', valueId: 'startIns' }
           ]
         },
         {
@@ -9812,6 +10397,7 @@
               inputType: 'text',
               label: 'IBAN',
               required: true,
+              valid: true,
               placeholder: 'DE40',
               validation: {
                 validate: (value) => value.length >= 2,
@@ -9826,6 +10412,7 @@
               required: true,
               placeholder: 'Kreditinstitut',
               disabled: true,
+              valid: true,
               validation: {
                 validate: (value) => value.length >= 2,
                 error: 'Bitte geben Sie den Namen der Bank an'
@@ -9874,7 +10461,7 @@
               type: 'input',
               inputType: 'text',
               label: 'Bitte erläutern Sie kurz um was es sich handelt.',
-              required: true,
+              required: false,
               placeholder: 'Geben Sie eine kurze Erläuterung ein',
               validation: {
                 validate: (value) => value.length >= 2,
@@ -9928,7 +10515,7 @@
                         title: 'Deckungsumfang & -summen',
                         items: [
                             { label: 'Deckungsumfang', value: 'Privat Beruf Verkehr (VN) Wohnen Vermietung' },
-                            { label: 'Selbstbeteiligung', value: '500 EUR', highlight: true  },
+                            { label: 'Selbstbeteiligung', value: '500 EUR', highlight: false  },
                             { label: 'Deckungssumme', value: 'unbegrenzt' },
                             { label: 'Kautionsdarlehen', value: 'bis zu 1 Mio EUR' },
                             { label: 'Kündigungsfristen', value: 'zum Vertragsablauf, Kündigungsfrist 3 Monate' }
@@ -10160,6 +10747,7 @@
           ${field.step ? `step="${field.step}"` : ''}
           ${field.required ? 'required' : ''}
           ${field.disabled ? 'disabled' : ''}
+          ${field.valid ? 'valid' : ''}
         ></ds-input>
       </div>
     `;
@@ -10183,33 +10771,7 @@
     `;
   }
 }
-// ===== NEUER CODE FÜR LAYOUT-RENDERING =====
-function renderFormFields(stepConfig) {
-  let html = '';
-  // Wenn layout definiert ist, nutze das
-  if (stepConfig.layout && stepConfig.layout.length > 0) {
-    stepConfig.layout.forEach(row => {
-      if (row.type === 'row') {
-        html += `<div class="form-row columns-${row.columns}">`;
-        row.fields.forEach(fieldId => {
-          const field = stepConfig.fields.find(f => f.id === fieldId);
-          if (field) {
-            html += createFormFieldHTML(field);
-          }
-        });
-        html += '</div>';
-      }
-    });
-  } else {
-    // Fallback: Alle Felder einzeln
-    stepConfig.fields.forEach(field => {
-      html += `<div class="form-row columns-1">`;
-      html += createFormFieldHTML(field);
-      html += '</div>';
-    });
-  }
-  return html;
-}
+
     // ===== STORAGE MANAGER =====
     class StorageManager {
       static saveFormData(data) {
@@ -10300,6 +10862,35 @@ function renderFormFields(stepConfig) {
         }
       }
     }
+
+    // ===== NEUER CODE FÜR LAYOUT-RENDERING =====
+function renderFormFields(stepConfig) {
+  let html = '';
+  // Wenn layout definiert ist, nutze das
+  if (stepConfig.layout && stepConfig.layout.length > 0) {
+    stepConfig.layout.forEach(row => {
+      if (row.type === 'row') {
+        html += `<div class="form-row columns-${row.columns}">`;
+        row.fields.forEach(fieldId => {
+          const field = stepConfig.fields.find(f => f.id === fieldId);
+          if (field) {
+            html += createFormFieldHTML(field);
+          }
+        });
+        html += '</div>';
+      }
+    });
+  } else {
+    // Fallback: Alle Felder einzeln
+    stepConfig.fields.forEach(field => {
+      html += `<div class="form-row columns-1">`;
+      html += createFormFieldHTML(field);
+      html += '</div>';
+    });
+  }
+  return html;
+}
+
     // ===== CHECKOUT STEPS RENDERER =====
     class CheckoutStepsRenderer {
       constructor(config) {
@@ -10323,66 +10914,55 @@ function renderFormFields(stepConfig) {
         card.className = 'step-card editing scroll-target';
         card.dataset.step = step.id;
         if (step.isConsentStep) {
-          card.innerHTML = `
-            <ds-ribbon variant="success" position="top-left">
-              <span class="icn icn-check-circle-filled" aria-hidden="true"></span>
-              Abgeschlossen
-            </ds-ribbon>
-            <div class="step-header">
-              <div class="step-header-left">
-                <div class="step-icon icn ${step.icon}" aria-hidden="true"></div>
-                <div class="step-title">
-                  <h2>${step.heading}</h2>
-                  <span class="step-subtitle" id="subtitle-${step.id}"></span>
-                </div>
-              </div>
-              <div class="step-header-right" id="header-action-${step.id}"></div>
-            </div>
-            <div class="step-content">
-              <form class="step-form" id="form-${step.id}" novalidate>
-                <div class="consent-section">
-                  <div class="consent-checkbox-wrapper">
-                    <ds-checkbox
-                      id="newsletter-checkbox"
-                      value="newsletter"
-                      name="newsletter-consent"
-                      aria-describedby="newsletter-text"
-                    ></ds-checkbox>
-                    <div class="consent-text" id="newsletter-text">
-                        Ja, ich möchte kostenlos von Verivox über deren jeweilige <a class="inlinelink" href="https://www.verivox.de/company/verivox-gruppe/" target="_blank" data-auto-event-observed="true">Angebote</a> und im geringen Umfang auch über besondere Angebote ausgewählter Partner mittels personalisierter elektronischer Post (z.B. E-Mail, SMS, WhatsApp) informiert werden. Ich stimme der aggregierten Nutzungsanalyse (Öffnungen und Klicks) zu. Diese Einwilligung kann ich jederzeit mit Wirkung für die Zukunft widerrufen (E-Mail an service@verivox.de) ohne dass hierfür andere als Übermittlungskosten nach Basistarif entstehen. Weitere Infos hier: <a class="inlinelink" href="https://www.verivox.de/company/datenschutz/" target="_blank" data-auto-event-observed="true">Datenschutzhinweise</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="disclaimer-text">
-                    Mit Klick auf „KAUF ABSCHLIESSEN" erkläre ich mich mit den <a href="https://www.verivox.de/company/agb/" target="_blank">AGB</a> und der <a href="#" target="_blank">Beratungsdokumentation</a> der Verivox Versicherungsvergleich GmbH einverstanden und nehme die <a href="https://www.verivox.de/company/datenschutz-versicherungsvergleich/" target="_blank">Datenschutzerklärung</a> zur Kenntnis. Des Weiteren bestätige ich, die zu den <a href="#" target="_blank">Vertragsbedingungen des Versicherers</a> gehörigen Dokumente heruntergeladen zu haben und erkläre mich mit deren Inhalt einverstanden.
-                </div>
+  card.innerHTML = `
+    <ds-ribbon variant="success" position="top-left">
+      <span class="icn icn-check-circle-filled" aria-hidden="true"></span>
 
-                <div class="form-actions-wrapper">
-
-                    <div class="form-actions">
-                        <ds-button text="Kauf abschließen" appearance="primary" data-step="${step.id}" data-action="next" class="btn-action" type="button" icon-right="check-filled"></ds-button>
-                    </div>
-                    <div class="form-actions-product">
-                        <span class="form-actions-provider-name">ARAG Premium (Koop / SV)</span> </br>
-                        <span class="form-actions-price-amount">491,31 €</span></br>
-                        <span class="form-actions-price-help">jährlich</span>
-                    </div>
-                </div>
-
-              </form>
+    </ds-ribbon>
+    <div class="step-header">
+      <div class="step-header-left">
+        <div class="step-icon icn ${step.icon}" aria-hidden="true"></div>
+        <div class="step-title">
+          <h2>${step.heading}</h2>
+          <span class="step-subtitle" id="subtitle-${step.id}"></span>
+        </div>
+      </div>
+      <div class="step-header-right" id="header-action-${step.id}"></div>
+    </div>
+    <div class="step-content">
+      <form class="step-form" id="form-${step.id}" novalidate>
+        <div class="consent-section">
+          <div class="consent-checkbox-wrapper">
+            <ds-checkbox
+              id="newsletter-checkbox"
+              value="newsletter"
+              name="newsletter-consent"
+              aria-describedby="newsletter-text"
+            ></ds-checkbox>
+            <div class="consent-text" id="newsletter-text">
+                Ja, ich möchte kostenlos von Verivox über deren jeweilige <a class="inlinelink" href="#" onclick="openTestModeModal(); return false;" data-auto-event-observed="true">Angebote</a> und im geringen Umfang auch über besondere Angebote ausgewählter Partner mittels personalisierter elektronischer Post (z.B. E-Mail, SMS, WhatsApp) informiert werden. Ich stimme der aggregierten Nutzungsanalyse (Öffnungen und Klicks) zu. Diese Einwilligung kann ich jederzeit mit Wirkung für die Zukunft widerrufen (E-Mail an service@verivox.de) ohne dass hierfür andere als Übermittlungskosten nach Basistarif entstehen. Weitere Infos hier: <a class="inlinelink" href="#" onclick="openTestModeModal(); return false;" data-auto-event-observed="true">Datenschutzhinweise</a>
             </div>
-            <div class="step-completed-content">
-              <div class="completed-data">
-                <div class="completed-data-row">
-                  <div class="data-item">
-                    <span class="data-label">Zustimmung</span>
-                    <span class="data-value" id="completed-newsletter_consent">-</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          `;
-        } else {
+          </div>
+          <div class="newsletter-error" id="newsletter-error"></div>
+        </div>
+        <div class="disclaimer-text">
+            Mit Klick auf „KAUF ABSCHLIESSEN" erkläre ich mich mit den <a href="#" onclick="openTestModeModal(); return false;">AGB</a> und der <a href="#" onclick="openTestModeModal(); return false;">Beratungsdokumentation</a> der Verivox Versicherungsvergleich GmbH einverstanden und nehme die <a href="#" onclick="openTestModeModal(); return false;">Datenschutzerklärung</a> zur Kenntnis. Des Weiteren bestätige ich, die zu den <a href="#" onclick="openTestModeModal(); return false;">Vertragsbedingungen des Versicherers</a> gehörigen Dokumente heruntergeladen zu haben und erkläre mich mit deren Inhalt einverstanden.
+        </div>
+
+      </form>
+    </div>
+    <div class="step-completed-content">
+      <div class="completed-data">
+        <div class="completed-data-row">
+          <div class="data-item">
+            <span class="data-label">Zustimmung</span>
+            <span class="data-value" id="completed-newsletter_consent">-</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+} else {
             card.innerHTML = `
       <ds-ribbon variant="success" position="top-left">
         <span class="icn icn-check-circle-filled" aria-hidden="true"></span>
@@ -10492,6 +11072,62 @@ class ConditionalFieldManager {
       }
       console.log('✓ additionalExplication Feld verborgen');
     }
+  }
+}
+
+// ===== DATE FORMATTER =====
+class DateFormatter {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        this.setupDateFormatting();
+        console.log('✓ DateFormatter initialized');
+    }
+
+    setupDateFormatting() {
+        const dateInput = document.getElementById('startIns')
+
+        if (dateInput) {
+            // Event Listener für Input
+      dateInput.addEventListener('input', (e) => {
+        this.formatDate(dateInput);
+      });
+      // Event Listener für Paste
+      dateInput.addEventListener('paste', (e) => {
+        setTimeout(() => {
+          this.formatDate(dateInput);
+        }, 10);
+      });
+
+      console.log('✓ Date formatting set up');
+
+        }
+
+    }
+
+    formatDate(inputElement) {
+    // Entferne alle nicht-Ziffern
+    let value = inputElement.value.replace(/\D/g, '');
+
+    // Begrenzte auf max 8 Zeichen (DDMMYYYY)
+    value = value.substring(0, 8);
+
+    // Formatiere als TT.MM.JJJJ
+    let formatted = '';
+    if (value.length > 0) {
+      formatted += value.substring(0, 2);  // TT
+    }
+    if (value.length > 2) {
+      formatted += '.' + value.substring(2, 4);  // MM
+    }
+    if (value.length > 4) {
+      formatted += '.' + value.substring(4, 8);  // JJJJ
+    }
+
+    inputElement.value = formatted;
+    console.log(`Date formatted: ${formatted}`);
   }
 }
 
@@ -10616,7 +11252,7 @@ class IBANFormatter {
                 <div class="documents-list">
                   <div class="document-item">
                     <span class="documents-list-title">Alle Dokumente herunterladen (3)</span>
-                    <a href="#" class="download-link" aria-label="Alle Dokumente herunterladen" download>
+                    <a href="#" onclick="openTestModeModal(); return false;" class="download-link" aria-label="Alle Dokumente herunterladen" download>
                       <span class="icn icn-download-filled" aria-hidden="true"></span>
                     </a>
                   </div>
@@ -10624,21 +11260,21 @@ class IBANFormatter {
                   <div class="document-item">
                     <span class="icn icn-paperclip-outlined document-icon" aria-hidden="true"></span>
                     <span class="document-name">Belehrung und Widerrufsrecht.pdf</span>
-                    <a href="#" class="download-link" aria-label="Belehrung und Widerrufsrecht.pdf herunterladen" download>
+                    <a href="#" onclick="openTestModeModal(); return false;" class="download-link" aria-label="Belehrung und Widerrufsrecht.pdf herunterladen" download>
                       <span class="icn icn-download-filled" aria-hidden="true"></span>
                     </a>
                   </div>
                   <div class="document-item">
                     <span class="icn icn-paperclip-outlined document-icon" aria-hidden="true"></span>
                     <span class="document-name">asspario_flyer_privathaftpflicht.pdf</span>
-                    <a href="#" class="download-link" aria-label="asspario_flyer_privathaftpflicht.pdf herunterladen" download>
+                    <a href="#" onclick="openTestModeModal(); return false;" class="download-link" aria-label="asspario_flyer_privathaftpflicht.pdf herunterladen" download>
                       <span class="icn icn-download-filled" aria-hidden="true"></span>
                     </a>
                   </div>
                   <div class="document-item">
                     <span class="icn icn-paperclip-outlined document-icon" aria-hidden="true"></span>
                     <span class="document-name">Assaprio_AVB.pdf</span>
-                    <a href="#" class="download-link" aria-label="Assaprio_AVB.pdf herunterladen" download>
+                    <a href="#" onclick="openTestModeModal(); return false;" class="download-link" aria-label="Assaprio_AVB.pdf herunterladen" download>
                       <span class="icn icn-download-filled" aria-hidden="true"></span>
                     </a>
                   </div>
@@ -10775,6 +11411,150 @@ class IBANFormatter {
         console.log('Drawer closed');
       }
     }
+
+    // ===== TOAST NOTIFICATION MANAGER =====
+class ToastManager {
+  constructor() {
+    this.toastContainer = null;
+    this.init();
+  }
+
+  init() {
+    this.createToastContainer();
+    console.log('✓ ToastManager initialized');
+  }
+
+  createToastContainer() {
+    // Prüfe ob Container bereits existiert
+    if (document.getElementById('toast-container')) {
+      this.toastContainer = document.getElementById('toast-container');
+      return;
+    }
+
+    // Erstelle Container
+    const container = document.createElement('div');
+    container.id = 'toast-container';
+    container.style.cssText = `
+      position: fixed;
+      bottom: 15vh;
+      left: 0;
+      right: 0;
+      display: flex;
+      z-index: 3000;
+
+      justify-content: center;
+      flex-direction: column;
+      gap: var(--ds-spacing-xxs, 8px);
+      max-width: 400px;
+      align-items: center;
+      padding: 0 var(--ds-spacing-m);
+    `;
+    document.body.appendChild(container);
+    this.toastContainer = container;
+  }
+
+  showToast(message, type = 'info', duration = 5000) {
+    const toast = document.createElement('div');
+    const toastId = `toast-${Date.now()}`;
+    toast.id = toastId;
+
+    // Style basierend auf Typ
+    const styles = {
+      info: {
+        background: 'var(--ds-background-info-light, #E3F2FD)',
+        border: '1px solid var(--ds-border-info, #2196F3)',
+        color: 'var(--ds-font-text-info, #1976D2)'
+      },
+      success: {
+        background: 'var(--ds-background-success-light, #E8F5E9)',
+        border: '1px solid var(--ds-border-success-regular, #4CAF50)',
+        color: 'var(--ds-font-text-success-regular, #2E7D32)'
+      },
+      warning: {
+        background: 'var(--ds-background-warning, #FCF5B8)',
+        border: 'var(--ds-stroke-m) solid var(--ds-border-warning, #F5DD14)',
+        borderLeft: 'var(--ds-stroke-xl) solid var(--ds-border-warning, #F5DD14)',
+        color: 'var(--ds-font-text-warning, #625808)'
+      },
+      danger: {
+        background: 'var(--ds-background-danger-light, #FFEBEE)',
+        border: '1px solid var(--ds-border-danger-regular, #F44336)',
+        color: 'var(--ds-font-text-danger-regular, #C62828)'
+      }
+    };
+
+    const style = styles[type] || styles.info;
+
+    toast.style.cssText = `
+      padding: var(--ds-spacing-xs, 16px);
+      border-radius: var(--ds-radius-xl, 5px);
+      font-size: var(--ds-font-size-m, 16px);
+      font-weight: var(--ds-font-weight-m, 400);
+      display: flex;
+      align-items: center;
+      gap: var(--ds-spacing-xs, 16px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      animation: slideInUp 0.3s ease;
+      background: ${style.background};
+      border: ${style.border};
+      border-left: ${style.borderLeft};
+      color: ${style.color};
+    `;
+
+    // Icon basierend auf Typ
+    const icons = {
+      info: 'icn-info-circle-filled',
+      success: 'icn-check-circle-filled',
+      warning: 'icn-warning-filled',
+      danger: 'icn-close-circle-filled'
+    };
+
+    const icon = icons[type] || icons.info;
+
+    toast.innerHTML = `
+      <span class="icn ${icon}" aria-hidden="true" style="flex-shrink: 0; font-size: 20px;"></span>
+      <span style="flex: 1;">${message}</span>
+      <button type="button" class="toast-close" aria-label="Toast schließen" style="
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        color: inherit;
+        font-size: 20px;
+        flex-shrink: 0;
+        transition: opacity 0.2s;
+      ">
+        <span class="icn icn-close-outlined" aria-hidden="true"></span>
+      </button>
+    `;
+
+    // Close Button
+    toast.querySelector('.toast-close').addEventListener('click', () => {
+      this.removeToast(toastId);
+    });
+
+    // Füge zum Container hinzu
+    this.toastContainer.appendChild(toast);
+
+    // Auto-Remove nach duration
+    setTimeout(() => {
+      this.removeToast(toastId);
+    }, duration);
+
+    console.log(`✓ Toast shown: ${type} - ${message}`);
+  }
+
+  removeToast(toastId) {
+    const toast = document.getElementById(toastId);
+    if (toast) {
+      toast.style.animation = 'slideOutDown 0.3s ease';
+      setTimeout(() => {
+        toast.remove();
+      }, 300);
+    }
+  }
+}
+
     // ===== CHECKOUT MANAGER =====
 class CheckoutManager {
   constructor(config) {
@@ -10966,34 +11746,60 @@ class CheckoutManager {
     this.formData[step] = data;
   }
   validateStep(step) {
-    const form = document.querySelector(`#form-${step}`);
-    if (!form) return false;
-    const stepConfig = this.config.steps.find(s => s.id === step);
-    if (stepConfig.isConsentStep) {
-      const checkbox = form.querySelector('ds-checkbox');
-      if (!checkbox || !checkbox.checked) {
-        console.log('Bitte bestätigen Sie die Newsletter-Anmeldung, um den Kauf abzuschließen.');
-        return false;
+  const form = document.querySelector(`#form-${step}`);
+  if (!form) return false;
+  const stepConfig = this.config.steps.find(s => s.id === step);
+
+  if (stepConfig.isConsentStep) {
+    const checkbox = form.querySelector('ds-checkbox');
+    const errorContainer = document.getElementById('newsletter-error');
+
+    if (!checkbox || !checkbox.checked) {
+      // Zeige Error Message unter dem Text
+      if (errorContainer) {
+        errorContainer.textContent = 'Bitte bestätigen Sie die Bedingungen, um den Kauf abzuschließen';
+        errorContainer.style.display = 'block';
       }
-      return true;
-    }
-    let isValid = true;
-    form.querySelectorAll('ds-input[required], ds-select[required]').forEach(input => {
-      const fieldId = input.id;
-      const fieldConfig = stepConfig.fields.find(f => f.id === fieldId);
-      if (!fieldConfig || !input.value || !fieldConfig.validation.validate(input.value)) {
-        input.invalid = true;
-        input.errorMessage = fieldConfig ? fieldConfig.validation.error : 'Dieses Feld ist erforderlich';
-        isValid = false;
-      } else {
-        input.invalid = false;
+
+      checkbox.invalid = true;
+      console.log('✗ Checkbox validation failed');
+
+      // Scroll zur Checkbox
+      setTimeout(() => {
+        checkbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+
+      return false;
+    } else {
+      // Entferne error message wenn checked
+      if (errorContainer) {
+        errorContainer.textContent = '';
+        errorContainer.style.display = 'none';
       }
-    });
-    if (!isValid) {
-        console.log('Bitte füllen Sie alle erforderlichen Felder korrekt aus.');
+      checkbox.invalid = false;
     }
-    return isValid;
+    return true;
   }
+
+  let isValid = true;
+  form.querySelectorAll('ds-input[required], ds-select[required]').forEach(input => {
+    const fieldId = input.id;
+    const fieldConfig = stepConfig.fields.find(f => f.id === fieldId);
+    if (!fieldConfig || !input.value || !fieldConfig.validation.validate(input.value)) {
+      input.invalid = true;
+      input.errorMessage = fieldConfig ? fieldConfig.validation.error : 'Dieses Feld ist erforderlich';
+      isValid = false;
+    } else {
+      input.invalid = false;
+    }
+  });
+
+  if (!isValid) {
+    console.log('Bitte füllen Sie alle erforderlichen Felder korrekt aus.');
+  }
+
+  return isValid;
+}
   // ===== KORREKTE METHODE MIT COMPLETED-TRACKING =====
   refreshAllStepStates() {
     console.log('Refreshing all step states, currentStep:', this.currentStep, 'completedSteps:', this.completedSteps);
@@ -11006,9 +11812,29 @@ class CheckoutManager {
     for (let i = 1; i <= this.config.steps.length; i++) {
       const card = document.querySelector(`[data-step="${i}"]`);
       if (!card) continue;
+
+      const headerActionEl = document.getElementById(`header-action-${i}`);
+
+          // ✅ FÜGE HIER HINZU: Spezialbehandlung für Step 9
+    if (i === 9) {
+      card.classList.add('editing'); // ✅ Immer editing
+      if (headerActionEl) {
+        headerActionEl.innerHTML = '';
+      }
+      console.log(`✏️  Step ${i}: EDITING (Consent Step - always editing)`);
+      continue; // ✅ Springe zum nächsten Step
+    }
+
       if (i === this.currentStep) {
         // Dieser Step wird gerade bearbeitet
         card.classList.add('editing');
+
+        // Leere den "Ändern" Button bei editing
+        if (headerActionEl) {
+         headerActionEl.innerHTML = '';
+        }
+
+
         console.log(`✏️  Step ${i}: EDITING`);
       } else if (this.completedSteps.includes(i)) {
         // Steps die bereits besucht wurden BLEIBEN COMPLETED
@@ -11023,6 +11849,69 @@ class CheckoutManager {
     }
     this.attachChangeLinks();
   }
+
+  // ===== NEUER CODE: Validierung vor Step 9 =====
+validateAllStepsCompleted() {
+  console.log('🔍 Validating all steps before Step 9...');
+
+  const requiredSteps = [1, 2, 3, 4, 5, 6, 7, 8]; // Alle Steps außer Step 9
+  const missingSteps = requiredSteps.filter(step => !this.completedSteps.includes(step));
+
+  if (missingSteps.length > 0) {
+    console.log('❌ Missing steps:', missingSteps);
+
+    // Finde den ERSTEN nicht-completed Step
+    const firstMissingStep = missingSteps[0];
+
+    // Setze diesen Step auf "editing"
+    this.currentStep = firstMissingStep;
+    this.dsStepsElement.current = firstMissingStep;
+    this.saveCheckoutState();
+    this.refreshAllStepStates();
+
+    // Scroll zu diesem Step mit Highlight-Effekt
+    setTimeout(() => {
+      const targetCard = document.querySelector(`[data-step="${firstMissingStep}"]`);
+      if (targetCard) {
+        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        // Visueller Highlight-Effekt (optional)
+        targetCard.style.transition = 'all 0.3s ease';
+        targetCard.style.boxShadow = '0 0 20px rgba(255, 86, 0, 0.5)';
+        setTimeout(() => {
+          targetCard.style.boxShadow = 'none';
+        }, 2000);
+      }
+    }, 300);
+
+    // Zeige User-freundliche Nachricht
+    this.showValidationError(firstMissingStep);
+    return false;
+  }
+
+  console.log('✅ All required steps completed!');
+  return true;
+}
+
+showValidationError(step) {
+  const stepConfig = this.config.steps.find(s => s.id === step);
+  const message = `Bitte füllen Sie zuerst Schritt ${step} aus: "${stepConfig.heading}"`;
+
+  // Option 1: Browser-Alert (einfach)
+  // alert(message);
+
+  // Option 2: Toast-Nachricht (wenn verfügbar)
+  //this.showToast(message, 'warning');
+  // Nutze Toast statt Alert
+  if (window.toastManager) {
+    window.toastManager.showToast(message, 'warning', 6000);
+  } else {
+    alert(message); // Fallback
+  }
+
+  console.log(message);
+}
+
   handleNext(step) {
     console.log(`handleNext: step ${step}`);
     this.collectFormData(step);
@@ -11083,9 +11972,16 @@ class CheckoutManager {
     const stepConfig = this.config.steps.find(s => s.id === step);
     const data = this.formData[step] || {};
     const headerActionEl = document.getElementById(`header-action-${step}`);
-    if (headerActionEl) {
-      headerActionEl.innerHTML = `<button class="change-button-link icn-pencil-filled" data-step="${step}">Ändern</button>`;
-    }
+    const stepCard = document.querySelector(`[data-step="${step}"]`);
+
+  // Nur zeige "Ändern" Button wenn Step NICHT editing ist
+  if (headerActionEl && stepCard && !stepCard.classList.contains('editing')) {
+    headerActionEl.innerHTML = `<button class="change-button-link icn-pencil-filled" data-step="${step}">Ändern</button>`;
+  } else if (headerActionEl) {
+    // Leere den Button wenn Step editing ist
+    headerActionEl.innerHTML = '';
+  }
+
     if (stepConfig.isConsentStep) {
       const newsletterValue = data['newsletter_consent'] ? 'Ja' : 'Nein';
       const completedNewsletterEl = document.getElementById('completed-newsletter_consent');
@@ -11129,48 +12025,71 @@ class CheckoutManager {
     }
   }
   completeCheckout() {
-    console.log('Checkout completed');
-    document.getElementById('checkoutSteps-container').style.display = 'none';
-    const successMsg = document.getElementById('successMessage');
-    successMsg.classList.add('show');
-    console.log('Checkout completed with data:', this.formData);
-    setTimeout(() => {
-      alert('Vielen Dank für Ihren Checkout!\n\nDaten:\n' + JSON.stringify(this.formData, null, 2));
-    }, 500);
-  }
+  console.log('Checkout completed');
+  document.getElementById('checkoutSteps-container').style.display = 'none';
+
+
 }
-    // ===== INITIALIZATION =====
-    console.log('Page loaded, initializing...');
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => {
-        const stepsManager = new StepsManager(CHECKOUT_CONFIG.steps);
-        const stepsRenderer = new CheckoutStepsRenderer(CHECKOUT_CONFIG.steps);
-        const checkoutManager = new CheckoutManager(CHECKOUT_CONFIG);
-        const drawerManager = new DrawerManager();
-        const conditionalFieldManager = new ConditionalFieldManager(checkoutManager);
-        const ibanFormatter = new IBANFormatter();
 
-        checkoutManager.init();
-        CHECKOUT_CONFIG.providers.forEach((config, index) => {
-          new ProviderBoxManager(config, index);
-        });
-        console.log(`✓ ${CHECKOUT_CONFIG.providers.length} Provider Box(es) loaded`);
-      });
-    } else {
-      const stepsManager = new StepsManager(CHECKOUT_CONFIG.steps);
-      const stepsRenderer = new CheckoutStepsRenderer(CHECKOUT_CONFIG.steps);
-      const checkoutManager = new CheckoutManager(CHECKOUT_CONFIG);
-      const drawerManager = new DrawerManager();
-      const conditionalFieldManager = new ConditionalFieldManager(checkoutManager);
-      const ibanFormatter = new IBANFormatter();
 
-      checkoutManager.init();
-      CHECKOUT_CONFIG.providers.forEach((config, index) => {
-        new ProviderBoxManager(config, index);
-      });
-      console.log(`✓ ${CHECKOUT_CONFIG.providers.length} Provider Box(es) loaded`);
-    }
+}
+// ===== INITIALIZATION =====
+console.log('Page loaded, initializing...');
+
+let checkoutManager;
+let toastManager; // 🔑 NEU
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    initTestModeModal();
+
+    toastManager = new ToastManager(); // 🔑 HIER
+    window.toastManager = toastManager; // 🔑 Global machen
+    const stickyFooter = new StickyCheckoutFooter();
+    const stepsManager = new StepsManager(CHECKOUT_CONFIG.steps);
+    const stepsRenderer = new CheckoutStepsRenderer(CHECKOUT_CONFIG.steps);
+
+    checkoutManager = new CheckoutManager(CHECKOUT_CONFIG);
+    window.checkoutManager = checkoutManager;
+
+    const drawerManager = new DrawerManager();
+    const conditionalFieldManager = new ConditionalFieldManager(checkoutManager);
+    const ibanFormatter = new IBANFormatter();
+    const dateFormatter = new DateFormatter();
+    checkoutManager.init();
+
+    CHECKOUT_CONFIG.providers.forEach((config, index) => {
+      new ProviderBoxManager(config, index);
+    });
+
+    console.log(`✓ ${CHECKOUT_CONFIG.providers.length} Provider Box(es) loaded`);
+  });
+} else {
+  initTestModeModal();
+
+  toastManager = new ToastManager(); // 🔑 HIER
+    window.toastManager = toastManager; // 🔑 Global machen
+    const stickyFooter = new StickyCheckoutFooter();
+    const stepsManager = new StepsManager(CHECKOUT_CONFIG.steps);
+    const stepsRenderer = new CheckoutStepsRenderer(CHECKOUT_CONFIG.steps);
+
+    checkoutManager = new CheckoutManager(CHECKOUT_CONFIG);
+    window.checkoutManager = checkoutManager;
+
+    const drawerManager = new DrawerManager();
+    const conditionalFieldManager = new ConditionalFieldManager(checkoutManager);
+    const ibanFormatter = new IBANFormatter();
+    const dateFormatter = new DateFormatter();
+    checkoutManager.init();
+
+  CHECKOUT_CONFIG.providers.forEach((config, index) => {
+    new ProviderBoxManager(config, index);
+  });
+
+  console.log(`✓ ${CHECKOUT_CONFIG.providers.length} Provider Box(es) loaded`);
+}
   </script>
+
   <!-- Load "prototype-sidecar.js". Used for common improvements for any prototype, e.g. protection and font loading -->
   <script src="prototype-sidecar.js"></script>
 </body>
