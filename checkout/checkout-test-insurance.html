@@ -114,7 +114,7 @@
         }
         /* ===== STORAGE INFO ===== */
         .storage-info {
-            display: flex;
+            display: none;
             align-items: center;
             gap: var(--ds-spacing-xs);
             font-size: 11px;
@@ -257,7 +257,7 @@
 
         }
         .sticky-checkout-footer {
-            padding: var(--ds-spacing-xs) 0 var(--ds-spacing-m) 0;
+            padding: var(--ds-spacing-xs) var(--ds-spacing-xs) var(--ds-spacing-m) var(--ds-spacing-xs);
             margin: 0 auto;
             max-width: 980px;
             display: grid;
@@ -442,6 +442,7 @@
             display: flex;
             align-items: baseline;
             gap: var(--ds-spacing-xs);
+            justify-content: right;
         }
         .price-amount {
             display: flex;
@@ -459,13 +460,14 @@
             font-weight: var(--ds-font-weight-m);
         }
         .price-help {
-            display: flex;
+            /*display: flex;*/
             align-items: center;
             gap: var(--ds-spacing-xs);
             font-size: var(--ds-font-size-m);
             font-weight: var(--ds-font-weight-m);
             color: var(--ds-font-text-neutral-regular);
             cursor: help;
+            justify-content: right;
         }
         .price-help .icn {
             font-size: 14px;
@@ -1659,6 +1661,14 @@
 </div>
 </div>
 <script>
+    // ===== PRICE FORMATTER =====
+    function formatPrice(price) {
+        return price.toLocaleString('de-DE', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+    }
+
     // ===== TEST-DATEN KONFIGURATION =====
     // Ändere USE_TEST_DATA auf true, um die Testdaten zu laden
     const USE_TEST_DATA = true; // <-- HIER UMSCHALTEN zum Laden/Entfernen von Testdaten
@@ -1836,13 +1846,13 @@
             if (provider) {
                 document.getElementById('stickyProviderLogo').src = provider.logo;
                 document.getElementById('stickyProviderName').textContent = provider.name;
-                document.getElementById('stickyPriceAmount').textContent = provider.price.toFixed(2) + ' €';
+                document.getElementById('stickyPriceAmount').textContent = formatPrice(provider.price) + ' €';
                 document.getElementById('stickyPriceHelp').textContent = provider.pricePeriod;
             }
         }
 
         showCompletionModal() {
-            const modalHTML = '<div class="completion-overlay" id="completionOverlay"><div class="completion-modal"><div class="completion-modal-header"><span class="icn icn-check-circle-filled" aria-hidden="true"></span><h2>Checkout abgeschlossen</h2></div><div class="completion-modal-content"><p>Vielen Dank für Ihre Teilnahme!</p><p>Der Checkout-Test ist mit dieser Seite nun abgeschlossen.<br>Sie bekommen in der Realität eine Bestätigungsseite angezeigt. Diese ist jedoch nicht Teil dieser Umfrage.</p></div><div class="completion-modal-footer"><ds-button text="Zur Startseite" appearance="primary" id="completionCloseBtn" type="button"></ds-button></div></div></div>';
+            const modalHTML = '<div class="completion-overlay" id="completionOverlay"><div class="completion-modal"><div class="completion-modal-header"><span class="icn icn-check-circle-filled" aria-hidden="true"></span><h2>Abschlussprozess abgeschlossen</h2></div><div class="completion-modal-content"><p>Vielen Dank für Ihre Teilnahme!</p><p>In diesem Prototyp ist der Abschlussprozess mit dieser Seite nun abgeschlossen.<br>Sie bekommen in der Realität eine Bestätigungsseite angezeigt. Diese ist jedoch nicht Teil dieser Umfrage.</p></div><div class="completion-modal-footer"><ds-button text="Zur Startseite" appearance="primary" id="completionCloseBtn" type="button"></ds-button></div></div></div>';
 
             document.body.insertAdjacentHTML('beforeend', modalHTML);
 
@@ -10696,7 +10706,7 @@
                                 {
                                     title: '',
                                     items: [
-                                        { label: 'Beratungsdokumentation', value: 'noch einfügen' }
+                                        { label: 'Beratungsdokumentation', value: 'Im Testmodus nicht verfügbar' }
                                     ]
                                 }
                             ]
@@ -11227,7 +11237,7 @@
                     <div class="price-section">
                         <div class="price-value">
                             <div class="price-amount">
-                                <span>${this.config.price.toFixed(2)}</span>
+                                <span>${formatPrice(this.config.price)}</span>
                                 <span class="price-currency">€</span>
                             </div>
                         </div>
@@ -11334,7 +11344,7 @@
         <div class="price-section">
             <div class="price-value">
                 <div class="price-amount">
-                    <span>${this.config.price.toFixed(2)}</span>
+                    <span>${formatPrice(this.config.price)}</span>
                     <span class="price-currency">€</span>
                 </div>
             </div>
@@ -12099,7 +12109,9 @@
         console.log(`✓ ${CHECKOUT_CONFIG.providers.length} Provider Box(es) loaded`);
     }
 </script>
+
 <!-- Load "prototype-sidecar.js". Used for common improvements for any prototype, e.g. protection and font loading -->
 <script src="prototype-sidecar.js"></script>
+
 </body>
 </html>

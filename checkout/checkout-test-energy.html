@@ -114,7 +114,7 @@
         }
         /* ===== STORAGE INFO ===== */
         .storage-info {
-            display: flex;
+            display: none;
             align-items: center;
             gap: var(--ds-spacing-xs);
             font-size: 11px;
@@ -145,13 +145,11 @@
             max-width: 980px;
             margin: 0 auto var(--ds-spacing-l) auto;
         }
-
         .intro-header {
             display: flex;
             align-items: flex-start;
             gap: var(--ds-spacing-xs);
         }
-
         .intro-illustration {
             width: 100px;
             height: 100px;
@@ -159,26 +157,22 @@
             flex-shrink: 0;
             animation: slideInDown 0.5s ease-out;
         }
-
         .intro-text {
             flex: 1;
             color: var(--ds-font-text-neutral-regular);
             line-height: 2rem;
         }
-
         .intro-text h1 {
             margin: var(--ds-spacing-xxs) 0 var(--ds-spacing-xs) 0;
             font-size: var(--ds-font-size-xxl);
             font-weight: var(--ds-font-weight-l);
             color: var(--ds-font-headline-neutral-regular);
         }
-
         .intro-text p {
             margin: 0;
             font-size: var(--ds-font-size-l);
             color: var(--ds-font-text-neutral-regular);
         }
-
         @keyframes slideInDown {
             from {
                 opacity: 0;
@@ -189,7 +183,6 @@
                 transform: translateY(0);
             }
         }
-
         /* ===== RESPONSIVE MOBILE ===== */
         @media (max-width: 768px) {
             .intro-header {
@@ -198,16 +191,13 @@
                 text-align: center;
                 gap: var(--ds-spacing-m);
             }
-
             .intro-illustration {
                 width: 80px;
                 height: 80px;
             }
-
             .intro-text h1 {
                 font-size: var(--ds-font-size-xl);
             }
-
             .intro-text p {
                 font-size: var(--ds-font-size-m);
             }
@@ -243,7 +233,6 @@
             height: fit-content;
         }
         /* ===== STICKY CHECKOUT FOOTER ===== */
-
         .sticky-checkout-footer-wrapper {
             position: fixed;
             bottom: 0;
@@ -253,11 +242,9 @@
             background: var(--ds-background-white);
             border-top: 4px solid var(--ds-border-neutral-regular);
             box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
-
-
         }
         .sticky-checkout-footer {
-            padding: var(--ds-spacing-xs) 0 var(--ds-spacing-m) 0;
+            padding: var(--ds-spacing-xs) var(--ds-spacing-xs) var(--ds-spacing-m) var(--ds-spacing-xs);
             margin: 0 auto;
             max-width: 980px;
             display: grid;
@@ -265,14 +252,10 @@
             gap: var(--ds-spacing-m);
             align-items: start;
             animation: slideUp 0.3s ease;
-
         }
         .sticky-checkout-footer.show {
             display: none;
         }
-
-
-
         @keyframes slideUp {
             from {
                 transform: translateY(100%);
@@ -283,67 +266,55 @@
                 opacity: 1;
             }
         }
-
         .sticky-footer-content {
             /*display: flex;*/
             align-items: center;
             gap: var(--ds-spacing-m);
         }
-
         .sticky-footer-button {
             flex: 1;
             min-height: 48px;
         }
-
         .sticky-footer-button ds-button {
             width: 100%;
             min-height: 48px;
         }
-
         .sticky-footer-button ds-button[disabled] {
             opacity: 0.5;
             cursor: not-allowed;
         }
-
         .sticky-footer-product-wrapper {
             display: grid;
             grid-template-columns: 60px 1fr;
             gap: var(--ds-spacing-xs);
         }
-
         .sticky-footer-product {
             display: flex;
             flex-direction: column;
             gap: var(--ds-spacing-xxxs);
             text-align: right;
         }
-
         .sticky-footer-provider-name {
             font-size: var(--ds-font-size-m);
             font-weight: var(--ds-font-weight-m);
             color: var(--ds-font-headline-neutral-regular);
         }
-
         .sticky-footer-price-amount {
             font-size: var(--ds-font-size-l);
             font-weight: var(--ds-font-weight-l);
             color: var(--ds-font-headline-neutral-regular);
         }
-
         .sticky-footer-price-help {
             font-size: var(--ds-font-size-s);
             color: var(--ds-font-text-neutral-regular);
         }
-
         /* Adjust main content to avoid overlap */
         body {
             padding-bottom: 100px;
         }
-
         body.sticky-footer-visible {
             padding-bottom: 120px;
         }
-
         /* Mobile */
         @media (max-width: 768px) {
             .sticky-checkout-footer{
@@ -351,25 +322,20 @@
                 gap: var(--ds-spacing-xxs);
                 padding: var(--ds-spacing-s) var(--ds-spacing-s) var(--ds-spacing-xxs) var(--ds-spacing-s);
             }
-
             .sticky-checkout-footer.show {
                 grid-template-columns: 1fr;
                 gap: var(--ds-spacing-xxs);
                 padding: var(--ds-spacing-s) var(--ds-spacing-s) var(--ds-spacing-xxs) var(--ds-spacing-s);
             }
-
             .sticky-footer-product {
                 text-align: right;
             }
-
             body.sticky-footer-visible {
                 padding-bottom: 180px;
             }
         }
-
         /* ===== PROVIDER BOX ===== */
         .provider-box {
-
             background: var(--ds-background-white);
             border: var(--ds-stroke-m) solid var(--ds-border-neutral-muted);
             border-radius: var(--ds-radius-xl);
@@ -443,6 +409,7 @@
             display: flex;
             align-items: baseline;
             gap: var(--ds-spacing-xs);
+            justify-content: right;
         }
         .price-amount {
             display: flex;
@@ -460,13 +427,14 @@
             font-weight: var(--ds-font-weight-m);
         }
         .price-help {
-            display: flex;
+            /*display: flex;*/
             align-items: center;
             gap: var(--ds-spacing-xs);
             font-size: var(--ds-font-size-m);
             font-weight: var(--ds-font-weight-m);
             color: var(--ds-font-text-neutral-regular);
             cursor: help;
+            justify-content: right;
         }
         .price-help .icn {
             font-size: 14px;
@@ -629,14 +597,13 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: var(--ds-spacing-m);
-            padding: var(--ds-spacing-xxs) 0;
+            padding: var(--ds-spacing-xxxs) 0;
             border-radius: var(--ds-radius-l);
             border-left: 4px solid transparent;
             transition: all 0.2s ease;
         }
         .drawer-list-item:hover {
             background-color: var(--ds-background-white);
-
         }
         .drawer-list-item.highlight {
             background-color: var(--ds-background-brand-light);
@@ -663,19 +630,14 @@
             word-break: break-word;
             line-height: 1.4;
         }
-
         /* ===== TAB GROUP OVERRIDES ===== */
         .drawer-section-content {
             border-top: var(--ds-stroke-m) solid var(--ds-border-neutral-regular);
         }
-
-
-
         ds-tab-group::part(tab) {
             padding: var(--ds-spacing-xxxs) var(--ds-spacing-s) var(--ds-spacing-xxxs) var(--ds-spacing-s);
             justify-content: end;
         }
-
         /* ===== STEP CARD STATES ===== */
         .step-card {
             background: var(--ds-background-white);
@@ -686,7 +648,6 @@
             position: relative;
             margin-bottom: var(--ds-spacing-xs);
         }
-
         .step-card.editing[data-step="4"] {
             background: none;
             border: none;
@@ -837,7 +798,7 @@
             padding: 0;
         }
         .step-card.editing .step-content {
-            max-height: 1200px;
+            max-height: 1600px; /* 1200px*/
             padding: var(--ds-spacing-xs);
         }
         .step-form {
@@ -857,7 +818,6 @@
                 max-height: 500px;
             }
         }
-
         .form-group {
             display: flex;
             flex-direction: column;
@@ -909,8 +869,6 @@
             font-size: var(--ds-font-size-s);
             font-weight: var(--ds-font-weight-m);
         }
-
-
         .form-actions.full-width {
             flex-direction: column;
         }
@@ -996,9 +954,72 @@
         }
         .disclaimer-text ul li {
             margin-left: var(--ds-spacing-xs);
-
         }
-
+        /* ===== RADIO GROUP STYLING ===== */
+        .radio-group-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: none;
+            max-width: 300px;
+            padding-bottom: var(--ds-spacing-m);
+        }
+        .radio-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: var(--ds-stroke-m) solid var(--ds-border-input, #686462);
+            border-radius: var(--ds-radius-l);
+        }
+        .radio-wrapper ds-radio {
+            flex: 1;
+        }
+        .ds-radio.orientation-horizontal label {
+            max-width: 300px;
+        }
+        @media (max-width: 768px) {
+            .radio-group-wrapper {
+                gap: none;
+            }
+        }
+        .radio-wrapper label {
+            display: flex;
+            align-items: center;
+            gap: var(--ds-spacing-xs);
+            cursor: pointer;
+            font-size: var(--ds-font-size-m);
+            color: var(--ds-font-text-neutral-regular);
+            /*border: var(--ds-stroke-m) solid var(--ds-border-input, #686462);*/
+            padding: 11px;
+            border-radius: var(--ds-radius-l);
+            width: 100%;
+            justify-content: left;
+        }
+        .radio-wrapper label:hover {
+            box-shadow:  0 0 4px 1px rgba(0, 0, 0, 0.3);
+        }
+        .radio-wrapper input[type="radio"] {
+            cursor: pointer;
+            border: var(--ds-stroke-m) solid var(--ds-border-input, #686462);
+            width: 24px;
+            height: 24px;
+            accent-color: var(--ds-background-brand-regular);
+        }
+        .radio-wrapper input[type="radio"]:active {
+            cursor: pointer;
+            border: var(--ds-stroke-m) solid var(--ds-border-input, #686462);
+            width: 24px;
+            height: 24px;
+        }
+        .radio-wrapper input[type="radio"]:hover {
+            cursor: pointer;
+            border: var(--ds-stroke-m) solid var(--ds-border-brand-muted);
+            width: 24px;
+            height: 24px;
+        }
+        /* Aktiver Button Styling */
+        .button-group-wrapper ds-button[data-active="true"] {
+            --ds-button-appearance: primary;
+        }
         /* ===== COMPLETION MODAL ===== */
         .completion-overlay {
             display: none;
@@ -1012,14 +1033,12 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-
         .completion-overlay.open {
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 1;
         }
-
         .completion-modal {
             background: white;
             border-radius: var(--ds-radius-xl);
@@ -1030,7 +1049,6 @@
             overflow: hidden;
             text-align: center;
         }
-
         .completion-modal-header {
             display: flex;
             flex-direction: column;
@@ -1040,13 +1058,11 @@
             background: linear-gradient(135deg, var(--ds-palette-violet5) 0%, var(--ds-palette-orange10) 100%);
             border-bottom: 1px solid var(--ds-palette-orange20);
         }
-
         .completion-modal-header .icn {
             font-size: 64px;
             color: var(--ds-palette-grey80);
             animation: checkmarkAnimation 0.6s ease;
         }
-
         @keyframes checkmarkAnimation {
             0% {
                 opacity: 0;
@@ -1061,52 +1077,41 @@
                 transform: scale(1);
             }
         }
-
         .completion-modal-header h2 {
             margin: 0;
             font-size: var(--ds-font-size-xl);
             font-weight: var(--ds-font-weight-l);
             color: var(--ds-palette-grey80);
         }
-
         .completion-modal-content {
             padding: var(--ds-spacing-m);
             color: var(--ds-font-text-neutral-regular);
             font-size: var(--ds-font-size-m);
             line-height: 1.6;
         }
-
         .completion-modal-content p {
             margin: var(--ds-spacing-s) 0;
         }
-
         .completion-modal-content p:first-child {
             margin-top: 0;
             font-size: var(--ds-font-size-l);
             font-weight: var(--ds-font-weight-l);
             color: var(--ds-font-headline-neutral-regular);
         }
-
         .completion-modal-footer {
             padding: var(--ds-spacing-m);
-
-
             display: flex;
             justify-content: center;
         }
-
         .completion-modal-footer ds-button {
             min-height: 48px;
             min-width: 200px;
         }
-
-
         /* ===== CHECKBOX VALIDATION STYLING ===== */
         ds-checkbox[invalid] {
             --ds-checkbox-border-color: var(--ds-border-danger-regular);
             --ds-checkbox-error-message-color: var(--ds-font-text-danger-regular);
         }
-
         ds-checkbox[invalid]::after {
             content: attr(error-message);
             display: block;
@@ -1114,18 +1119,14 @@
             color: var(--ds-font-text-danger-regular);
             margin-top: var(--ds-spacing-xxxs);
         }
-
         .consent-checkbox-wrapper ds-checkbox[invalid] {
             border: 1px solid var(--ds-border-danger-regular);
             border-radius: var(--ds-radius-m);
-
         }
-
         .newsletter-error {
             color: var(--ds-font-text-danger);
             font-size: var(--ds-font-size-s);
         }
-
         /* ===== COMPLETED CONTENT ===== */
         .step-completed-content {
             display: none;
@@ -1166,7 +1167,6 @@
             text-align: left;
             word-break: break-word;
         }
-
         /* ===== TOAST ANIMATIONS ===== */
         @keyframes slideInUp {
             from {
@@ -1178,7 +1178,6 @@
                 transform: translateY(0);
             }
         }
-
         @keyframes slideOutDown {
             from {
                 opacity: 1;
@@ -1189,7 +1188,6 @@
                 transform: translateY(100%);
             }
         }
-
         /* ===== SUCCESS MESSAGE ===== */
         .success-message {
             display: none;
@@ -1476,7 +1474,6 @@
                 font-size: var(--ds-font-size-s);
             }
         }
-
         /* ===== TEST MODE MODAL ===== */
         .test-mode-overlay {
             display: none;
@@ -1490,14 +1487,12 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-
         .test-mode-overlay.open {
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 1;
         }
-
         .test-mode-modal {
             background: var(--ds-background-white);
             border-radius: var(--ds-radius-xl);
@@ -1507,7 +1502,6 @@
             animation: modalSlideIn 0.3s ease;
             overflow: hidden;
         }
-
         @keyframes modalSlideIn {
             from {
                 opacity: 0;
@@ -1518,7 +1512,6 @@
                 transform: scale(1);
             }
         }
-
         .test-mode-modal-header {
             display: flex;
             align-items: center;
@@ -1527,34 +1520,29 @@
             background-color: var(--ds-background-info-light);
             border-bottom: 1px solid var(--ds-border-info);
         }
-
         .test-mode-modal-header .icn {
             font-size: 24px;
             color: var(--ds-font-text-info);
             flex-shrink: 0;
         }
-
         .test-mode-modal-header h2 {
             margin: 0;
             font-size: var(--ds-font-size-l);
             font-weight: var(--ds-font-weight-l);
             color: var(--ds-font-text-info);
         }
-
         .test-mode-modal-content {
             padding: var(--ds-spacing-xs) var(--ds-spacing-m);
             color: var(--ds-font-text-neutral-regular);
             font-size: var(--ds-font-size-m);
             line-height: 1.6;
         }
-
         .test-mode-modal-footer {
             padding: var(--ds-spacing-xs);
             border-top: 1px solid var(--ds-border-neutral-light);
             display: flex;
             justify-content: flex-end;
         }
-
         .test-mode-modal-footer ds-button {
             min-height: 40px;
         }
@@ -1663,10 +1651,17 @@
 </div>
 </div>
 <script>
+    // ===== PRICE FORMATTER =====
+    function formatPrice(price) {
+        return price.toLocaleString('de-DE', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+    }
+
     // ===== TEST-DATEN KONFIGURATION =====
     // Ändere USE_TEST_DATA auf true, um die Testdaten zu laden
     const USE_TEST_DATA = true; // <-- HIER UMSCHALTEN zum Laden/Entfernen von Testdaten
-
     const TEST_DATA = {
         1: {
             salutation: 'Herr',
@@ -1678,36 +1673,33 @@
             street: 'Ahlfeldstr.',
             housenumber: '4',
             email: 'kim.meier@gmail.com',
-            emailConfirm: 'kim.meier@gmail.com',
             birthdate: '22.12.2006',
             telPre: '0152',
             telNumber: '12345678'
         },
         2: {
-            reason: 'Ich ziehe um',
+            reason: 'Ich möchte den Anbieter/Tarif wechseln',
+            currentProvider: 'Vattenfall Europe Sales GmbH',
             moveDate: '01.03.2026',
-            meterNumber: '1XJH9803749',
+            meterNumber: '12345678',
+            marktlokationsID: '50481644399'
         },
         3: {
             paymentMethod: 'Bankeinzug',
             iban: 'DE89 3704 0044 0532 0130 00',
             bank: 'Commerzbank'
         }
-
     };
-
     // ===== SIMPLE TEST MODE MODAL (GANZ OBEN - VOR ALLEM ANDEREN) =====
     function initTestModeModal() {
         // Erstelle Modal HTML
         const modalHTML = '<div class="test-mode-overlay" id="testModeOverlay"><div class="test-mode-modal"><div class="test-mode-modal-header"><span class="icn icn-info-filled" aria-hidden="true"></span><h2>Testmodus</h2></div><div class="test-mode-modal-content"><p>Das ist eine <b>Simulation</b> im Rahmen einer Nutzerbefragung. </br>Externe <b>Links und Downloads sind deaktiviert</b>.</p></div><div class="test-mode-modal-footer"><ds-button text="Verstanden" appearance="primary" id="testModeCloseBtn" type="button"></ds-button></div></div></div>';
         document.body.insertAdjacentHTML('beforeend', modalHTML);
-
         // Close Button
         const closeBtn = document.getElementById('testModeCloseBtn');
         if (closeBtn) {
             closeBtn.addEventListener('click', closeTestModeModal);
         }
-
         // Overlay Click
         const overlay = document.getElementById('testModeOverlay');
         if (overlay) {
@@ -1717,7 +1709,6 @@
                 }
             });
         }
-
         // Escape Key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
@@ -1725,7 +1716,6 @@
             }
         });
     }
-
     // Modal öffnen
     function openTestModeModal() {
         const overlay = document.getElementById('testModeOverlay');
@@ -1735,7 +1725,6 @@
             console.log('✓ Test Mode Modal opened');
         }
     }
-
     // Modal schließen
     function closeTestModeModal() {
         const overlay = document.getElementById('testModeOverlay');
@@ -1745,24 +1734,20 @@
             console.log('✓ Test Mode Modal closed');
         }
     }
-
     // ===== STICKY CHECKOUT FOOTER MANAGER =====
     class StickyCheckoutFooter {
         constructor() {
             this.init();
         }
-
         init() {
             this.createFooter();
             this.setupEventListeners();
             console.log('✓ StickyCheckoutFooter initialized');
         }
-
         createFooter() {
             const footerHTML = `
     <div class="sticky-checkout-footer-wrapper">
         <div class="sticky-checkout-footer" id="stickyCheckoutFooter" style="max-width:980px;">
-
             <div class="sticky-footer-content">
                 <div class="sticky-footer-button">
                     <ds-button text="Zahlungspflichtig bestellen" appearance="primary" id="stickyCheckoutBtn" type="button" icon-right="check-filled"></ds-button>
@@ -1771,28 +1756,23 @@
             </div>
             <div class="sticky-footer-product-wrapper">
                 <div class="provider-logo"><img id="stickyProviderLogo"/></div>
-
                 <div class="sticky-footer-product">
                     <span class="sticky-footer-provider-name" id="stickyProviderName">-</span>
                     <span class="sticky-footer-price-amount" id="stickyPriceAmount">-</span>
                     <span class="sticky-footer-price-help" id="stickyPriceHelp">-</span>
                 </div>
             </div>
-
         </div>
     </div>
     `
             document.body.insertAdjacentHTML('beforeend', footerHTML);
         }
-
         setupEventListeners() {
             const stickyBtn = document.getElementById('stickyCheckoutBtn');
             const self = this;
-
             if (stickyBtn) {
                 stickyBtn.addEventListener('click', function(e) {
                     e.preventDefault();
-
                     // 🔑 NEUE VALIDIERUNG HIER
                     // Prüfe ob ALLE Steps vor Step 4 completed sind
                     const checkoutManager = window.checkoutManager; // Siehe unten
@@ -1800,7 +1780,6 @@
                         console.log('❌ Validation failed - nicht alle Steps sind abgeschlossen');
                         return; // Verhindere Checkout
                     }
-
                     const Step4Card = document.querySelector('[data-step="4"]');
                     if (Step4Card) {
                         // Zeige Completion Modal direkt (ohne Checkbox-Validierung)
@@ -1808,22 +1787,18 @@
                     }
                 });
             }
-
             // Beobachte Step 4 Sichtbarkeit
             setTimeout(() => {
                 self.observeStep4();
             }, 500);
         }
-
         observeStep4() {
             const Step4Card = document.querySelector('[data-step="4"]');
             if (!Step4Card) return;
-
             const self = this;
             const observer = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
                     const footer = document.getElementById('stickyCheckoutFooter');
-
                     if (entry.isIntersecting) {
                         footer.classList.remove('show');
                         document.body.classList.remove('sticky-footer-visible');
@@ -1839,57 +1814,45 @@
                 rootMargin: '1200px 0px 0px 0px',
                 threshold: 0.7
             });
-
             observer.observe(Step4Card);
         }
-
         updateProductInfo() {
             const provider = CHECKOUT_CONFIG.providers[0];
             if (provider) {
                 document.getElementById('stickyProviderLogo').src = provider.logo;
                 document.getElementById('stickyProviderName').textContent = provider.name;
-                document.getElementById('stickyPriceAmount').textContent = provider.price.toFixed(2) + ' €';
+                document.getElementById('stickyPriceAmount').textContent = formatPrice(provider.price) + ' €';
                 document.getElementById('stickyPriceHelp').textContent = provider.pricePeriod;
             }
         }
-
         showCompletionModal() {
-            const modalHTML = '<div class="completion-overlay" id="completionOverlay"><div class="completion-modal"><div class="completion-modal-header"><span class="icn icn-check-circle-filled" aria-hidden="true"></span><h2>Checkout abgeschlossen</h2></div><div class="completion-modal-content"><p>Vielen Dank für Ihre Teilnahme!</p><p>Der Checkout-Test ist mit dieser Seite nun abgeschlossen.<br>Sie bekommen in der Realität eine Bestätigungsseite angezeigt. Diese ist jedoch nicht Teil dieser Umfrage.</p></div><div class="completion-modal-footer"><ds-button text="Zur Startseite" appearance="primary" id="completionCloseBtn" type="button"></ds-button></div></div></div>';
-
+            const modalHTML = '<div class="completion-overlay" id="completionOverlay"><div class="completion-modal"><div class="completion-modal-header"><span class="icn icn-check-circle-filled" aria-hidden="true"></span><h2>Abschlussprozess abgeschlossen</h2></div><div class="completion-modal-content"><p>Vielen Dank für Ihre Teilnahme!</p><p>In diesem Prototyp ist der Abschlussprozess mit dieser Seite nun abgeschlossen.<br>Sie bekommen in der Realität eine Bestätigungsseite angezeigt. Diese ist jedoch nicht Teil dieser Umfrage.</p></div><div class="completion-modal-footer"><ds-button text="Zur Startseite" appearance="primary" id="completionCloseBtn" type="button"></ds-button></div></div></div>';
             document.body.insertAdjacentHTML('beforeend', modalHTML);
-
             const overlay = document.getElementById('completionOverlay');
             const closeBtn = document.getElementById('completionCloseBtn');
-
             overlay.classList.add('open');
             document.body.style.overflow = 'hidden';
-
             closeBtn.addEventListener('click', function() {
                 overlay.classList.remove('open');
                 document.body.style.overflow = '';
                 console.log('Completion Modal closed - Clearing storage and reloading page...');
-
                 localStorage.removeItem('verivox_checkout_data');
                 localStorage.removeItem('verivox_checkout_state');
                 console.log('✓ LocalStorage cleared');
-
                 // Scrolle nach oben UND dann reload
                 window.scrollTo({
                     top: 0,
                     left: 0,
                     behavior: 'instant' // 👈 Sofort, nicht animiert
                 });
-
                 // Reload nach kurzer Verzögerung
                 setTimeout(function() {
                     location.reload();
                 }, 100);
             });
-
             console.log('✓ Checkout completed');
         }
     }
-
     // ===== CHECKOUT CONFIGURATION (JSON) =====
     const CHECKOUT_CONFIG = {
         steps: [
@@ -1931,11 +1894,6 @@
                     {
                         type: 'row',
                         columns: 1,
-                        fields: ['emailConfirm']
-                    },
-                    {
-                        type: 'row',
-                        columns: 1,
                         fields: ['birthdate']
                     },
                     {
@@ -1943,7 +1901,6 @@
                         columns: 2,
                         fields: ['telPre', 'telNumber']
                     }
-
                 ],
                 fields: [
                     {
@@ -2089,19 +2046,6 @@
                         }
                     },
                     {
-                        id: 'emailConfirm',
-                        type: 'input',
-                        inputType: 'email',
-                        label: 'E-Mail-Adresse wiederholen',
-                        required: true,
-                        valid: true,
-                        placeholder: 'max@example.de',
-                        validation: {
-                            validate: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
-                            error: 'Bitte bestätigen Sie die E-Mail-Adresse ein'
-                        }
-                    },
-                    {
                         id: 'birthdate',
                         type: 'input',
                         inputType: 'text',
@@ -2145,7 +2089,6 @@
                     { label: 'Email', valueId: 'email' },
                     { label: 'Telefon', valueIds: ['telPre', 'telNumber'], transform: (vals) => `${vals[0]}/${vals[1]}`  }
                 ]
-
             },
             {
                 id: 2,
@@ -2165,18 +2108,51 @@
                     {
                         type: 'row',
                         columns: 1,
+                        fields: ['currentProvider']
+                    },
+                    {
+                        type: 'row',
+                        columns: 1,
+                        fields: ['clientNumber']
+                    },
+                    {
+                        type: 'row',
+                        columns: 1,
                         fields: ['meterNumber']
+                    },
+                    {
+                        type: 'row',
+                        columns: 1,
+                        fields: ['marktlokationsID']
+                    },
+                    {
+                        type: 'row',
+                        columns: 1,
+                        fields: ['cancelOption']
+                    },
+                    {
+                        type: 'row',
+                        columns: 1,
+                        fields: ['cancelDateOption']
+                    },
+                    {
+                        type: 'row',
+                        columns: 1,
+                        fields: ['cancelDate']
+                    },
+                    {
+                        type: 'row',
+                        columns: 1,
+                        fields: ['contractEnd']
                     }
                 ],
                 fields: [
                     {
                         id: 'reason',
-                        type: 'select',
+                        type: 'button-group',
                         label: 'Wechsel oder Umzug?',
                         required: true,
-                        placeholder: 'Bitte wählen...',
                         options: [
-                            { value: '', label: 'Bitte auswählen...' },
                             {
                                 label: "Ich möchte den Anbieter/Tarif wechseln",
                                 value: "Ich möchte den Anbieter/Tarif wechseln"
@@ -2191,6 +2167,7 @@
                             error: 'Bitte geben Sie an weshalb Sie wechseln wollen'
                         }
                     },
+                    // 🔑 NEU: Felder nur für "Umzug"
                     {
                         id: 'moveDate',
                         type: 'input',
@@ -2198,6 +2175,10 @@
                         label: 'Umzugsdatum',
                         required: true,
                         placeholder: 'TT.MM.JJJJ',
+                        conditional: {
+                            fieldId: 'moveType',
+                            value: 'umzug'
+                        },
                         validation: {
                             validate: (value) => value.length >= 2,
                             error: 'Bitte geben Sie Ihr Umzugsdatum an angeben'
@@ -2210,16 +2191,156 @@
                         label: 'Zählernummer',
                         required: false,
                         placeholder: 'z.B. 1ESY1170046711 oder 44600637',
+                        conditional: {
+                            fieldId: 'moveType',
+                            value: 'umzug'
+                        },
                         validation: {
                             validate: (value) => value.length >= 2,
                             error: 'Geben Sie Ihre Zählernummer jetzt oder später an'
                         }
+                    },
+                    // 🔑 NEU: Felder nur für "Wechsel"
+                    {
+                        id: 'currentProvider',
+                        type: 'select',
+                        label: 'Bisheriger Anbieter',
+                        required: false,
+                        placeholder: 'Bitte Anrede wählen',
+                        options: [
+                            { value: '', label: 'Bitte wählen (geringe Auswahl wegen Testmodus)' },
+                            { value: '1&1 Energy GmbH', label: '1&1 Energy GmbH' },
+                            { value: 'E.ON Energie Deutschland GmbH', label: 'E.ON Energie Deutschland GmbH' },
+                            { value: 'Vattenfall Europe Sales GmbH', label: 'Vattenfall Europe Sales GmbH' }
+                        ],
+                        validation: {
+                            validate: (value) => value.length > 0,
+                            error: 'Bitte bisherigen Anbieter auswählen'
+                        }
+                    },
+                    {
+                        id: 'clientNumber',
+                        type: 'input',
+                        inputType: 'text',
+                        label: 'Kundennummer',
+                        required: false,
+                        placeholder: '',
+                        conditional: {
+                            fieldId: 'moveType',
+                            value: 'wechsel'
+                        },
+                        validation: {
+                            validate: (value) => value.length >= 2,
+                            error: 'Geben Sie Ihre Zählernummer jetzt oder später an'
+                        }
+                    },
+                    {
+                        id: 'marktlokationsID',
+                        type: 'input',
+                        inputType: 'text',
+                        label: 'Marktlokations-ID',
+                        required: false,
+                        placeholder: '',
+                        conditional: {
+                            fieldId: 'moveType',
+                            value: 'wechsel'
+                        },
+                        validation: {
+                            validate: (value) => value.length >= 2,
+                            error: 'Geben Sie Ihre Marktlokations-ID jetzt oder später an'
+                        }
+                    },
+                    {
+                        id: 'cancelOption',
+                        type: 'select',
+                        label: 'Kündigung des bisherigen Vertrages',
+                        required: false,
+                        placeholder: 'Bitte auswählen...',
+                        conditional: {
+                            fieldId: 'moveType',
+                            value: 'wechsel'
+                        },
+                        options: [
+                            { value: 'Automatische Kündigung durch neuen Anbieter', label: 'Automatische Kündigung durch neuen Anbieter' },
+                            { value: 'Ich möchte selbst kündigen', label: 'Ich möchte selbst kündigen' },
+                            { value: 'Ich habe bereits gekündigt', label: 'Ich habe bereits gekündigt' },
+                            { value: 'Ich wurde von meinem Anbieter gekündigt', label: 'Ich wurde von meinem Anbieter gekündigt' }
+                        ],
+                        validation: {
+                            validate: (value) => value.length > 0,
+                            error: 'Bitte wählen Sie eine Kündigungsoptions aus'
+                        }
+                    },
+                    {
+                        id: 'cancelDateOption',
+                        type: 'select',
+                        label: 'Wechseltermin',
+                        required: false,
+                        placeholder: 'Bitte auswählen...',
+                        conditional: {
+                            fieldId: 'moveType',
+                            value: 'wechsel'
+                        },
+                        conditional: {
+                            fieldId: 'cancelOption',
+                            value: 'Automatische Kündigung durch neuen Anbieter'
+                        },
+                        options: [
+                            { value: 'Nächstmöglicher Termin', label: 'Nächstmöglicher Termin' },
+                            { value: 'Wechseltermin angeben', label: 'Wechseltermin angeben' }
+                        ],
+                        validation: {
+                            validate: (value) => value.length > 0,
+                            error: 'Bitte Terminwunsch angeben'
+                        }
+                    },
+                    {
+                        id: 'cancelDate',
+                        type: 'input',
+                        inputType: 'text',
+                        label: 'gewünschter Wechseltermin',
+                        required: true,
+                        placeholder: 'TT.MM.JJJJ',
+                        value: '01.03.2026',
+                        conditional: {
+                            fieldId: 'moveType',
+                            value: 'wechsel'
+                        },
+                        validation: {
+                            validate: (value) => value.length >= 2,
+                            error: 'Bitte geben Sie Ihren gewünschten Wechseltermin an'
+                        }
+                    },
+                    {
+                        id: 'contractEnd',
+                        type: 'input',
+                        inputType: 'text',
+                        label: 'Vertragsende am',
+                        required: true,
+                        placeholder: 'TT.MM.JJJJ',
+                        conditional: {
+                            fieldId: 'moveType',
+                            value: 'wechsel'
+                        },
+                        validation: {
+                            validate: (value) => value.length >= 2,
+                            error: 'Bitte geben Sie das Datum des Vertragsendes'
+                        }
                     }
                 ],
                 completedDataFields: [
-                    { label: 'Grund', valueId: 'reason' },
+                    { label: 'Wechselgrund', valueId: 'reason' },
                     { label: 'Umzugsdatum', valueId: 'moveDate' },
-                    { label: 'Zählernummer', valueId: 'meterNumber' }
+                    { label: 'Bisheriger Anbieter', valueId: 'currentProvider' },
+                    { label: 'Kundennummer', valueId: 'clientNumber' },
+                    { label: 'Zählernummer', valueId: 'meterNumber' },
+                    { label: 'Marktlokations-ID', valueId: 'marktlokationsID' },
+                    { label: 'Kündigung des bisherigen Vertrags', valueId: 'cancelOption' },
+
+                    { label: 'Wechseltermin', valueId: 'cancelDateOption' },
+                    { label: 'Wechsel zum', valueId: 'cancelDate' },
+                    { label: 'Vertragsende', valueId: 'contractEnd' },
+
                 ]
             },
             {
@@ -2299,8 +2420,6 @@
                     { label: 'Kreditinstitut', valueId: 'bank' }
                 ]
             },
-
-
             {
                 id: 4,
                 heading: 'Antragsabschluss',
@@ -2317,7 +2436,7 @@
                 logo: 'img/vattenfall-logo.png',
                 name: 'ÖkoStrom 12',
                 rating: 4.5,
-                ratingCount: 11.280,
+                ratingCount: 5.942,
                 price: 33.73,
                 pricePeriod: 'Durchschnitt pro Monat',
                 details: [
@@ -2339,57 +2458,21 @@
                             title: 'Allgemein',
                             subsections: [
                                 {
-                                    title: '',
+                                    title: 'Preisberechnung',
                                     items: [
-                                        { label: 'Deckungsumfang', value: 'Privat Beruf Verkehr (VN) Wohnen Vermietung' },
-                                        { label: 'Selbstbeteiligung', value: '500 EUR', highlight: false  },
-                                        { label: 'Deckungssumme', value: 'unbegrenzt' },
-                                        { label: 'Kautionsdarlehen', value: 'bis zu 1 Mio EUR' },
-                                        { label: 'Kündigungsfristen', value: 'zum Vertragsablauf, Kündigungsfrist 3 Monate' }
-                                    ]
-                                },
-                                {
-                                    title: 'Versicherte Personen',
-                                    items: [
-                                        { label: 'Versicherungsnehmer', value: 'versichert Sofern Vertragsumfang versichert/vereinbart: Einschluss Wohnen/Vermietung: • auch in der Eigenschaft als Eigentümer, Vermieter, Verpächter, Mieter, Pächter, Nutzungsberechtigter' },
-                                        { label: 'Partner', value: 'versichert Sofern Vertragsumfang versichert/vereinbart: Einschluss Privat/Beruf/Verkehr: Ehe-/Lebenspartner Achtung: • die Mitversicherung des Lebenspartners muss beantragt werden • Einschluss Beruf bei Senior-Tarifen nicht möglich' },
-                                        { label: 'Eltern', value: 'versichert Sofern Vertragsumfang versichert/vereinbart: Einschluss Privat/Beruf/Verkehr: • Eltern und Großeltern, sofern sich diese im Ruhestand befinden und mit dem VN in h.G. leben. Achtung: die Mitversicherung der Eltern und Großeltern muss beantragt werden.' },
-                                        { label: 'Großeltern, sonstige Personen', value: 'versichert Sofern Vertragsumfang versichert/vereinbart: Einschluss Privat/Beruf/Verkehr: • Eltern und Großeltern, sofern sich diese im Ruhestand befinden und mit dem VN in h.G. leben. Achtung: die Mitversicherung der Eltern und Großeltern muss beantragt werden.' }
-                                    ]
-                                },
-                                {
-                                    title: 'Versicherte Tätigkeiten',
-                                    items: [
-                                        { label: 'Selbstständige Tätigkeit der versicherten Person bis zu einem bestimmten Jahresumsatz erlaubt', value: 'nicht versichert' },
-                                        { label: 'Mitversicherung nebenberuflicher, ehrenamtlicher Tätigkeiten', value: 'versichert' },
-                                        { label: 'Vorsorge bei Aufnahme einer freiberuflichen Tätigkeit', value: 'ohne Wartezeit, versichert' },
-                                        { label: 'Auslandsaufenthalt zeitlich begrenzt', value: 'im örtlichen Geltungsbereich mitversichert; Über Spezial-Straf-Rechtsschutz weltweiter Versicherungsschutz' },
-                                        { label: 'Auslandsdeckung im Beruf', value: 'versichert, im Geltungsbereich ohne zeitliche Begrenzung; weltweit: Urlaubs-, Dienst- oder Geschäftsreise, Work&Travel, Au-pair Aufenthalt; Schüleraustausch oder Auslandsemester bis zu 12 Monate; private Verträge über das Internet' }
-                                    ]
-                                },
-                                {
-                                    title: 'Anwaltswahl & telefonische Auskünfte',
-                                    items: [
-                                        { label: 'Ent­schei­dung über die De­ckun­gs­zu­sa­ge', value: 'Stichentscheid' },
-                                        { label: 'Freie Rechts­an­walts­wahl', value: 'ja' },
-                                        { label: 'Scha­dens­fäl­le vor Ver­si­che­run­gs­be­ginn', value: 'versichert, sofern betroffenes Risiko seit mind. 5 Jahren ununterbrochen bei der Auxilia mitversichert' },
-                                        { label: 'Telefonische Erstberatung', value: 'versichert • in allen Rechtsschutzangelegenheiten • auch Online-Beratung' },
-                                        { label: 'Te­le­fo­ni­sche An­walts­aus­künf­te für nicht ver­si­cher­te Ri­si­ken', value: 'versichert • in allen Rechtsschutzangelegenheiten • auch Online-Beratung' },
-                                        { label: 'Te­le­fo­ni­sche An­walts­aus­künfte für nicht ver­si­cher­ba­re Ri­si­ken', value: 'nicht versichert' },
-                                        { label: 'Me­dia­ti­ons­ver­fah­ren (An­zahl und Höhe der Sit­zun­gen)', value: 'bis zu 3.000 EUR Jahreshöchstentschädigung max. 6.000 EUR auch für ausgeschlossene Rechtsangelegenheiten (Mediation XXL)' }
-                                    ]
-                                },
-                                {
-                                    title: 'Leistungsaussagen',
-                                    items: [
-                                        { label: 'Leistungsaussagen', value: '' },
-                                        { label: 'Strafvollstreckungsmaßnahmen', value: 'versichert, ab einer Geldstrafe oder -buße ab 255 EUR' },
-                                        { label: 'Eherechtschutz', value: 'nicht versichert' },
-                                        { label: 'Unterhaltsrechtsschutz', value: 'Kosten der anwaltlichen Erstberatung' },
-                                        { label: 'Innovationsklausel (Bedingungsverbesserungen)', value: 'versichert' },
-                                        { label: 'Besonderheiten bei Arbeitslosigkeit', value: 'nicht versichert' },
-                                        { label: 'Kapitalanlagen', value: 'risikoarme Kapitalanlagen: Summe unbegrenzt' },
-                                        { label: 'Photovoltaikanlagen', value: 'bis zu 20.000 EUR' }
+                                        { label: 'Ihre Verbrauchsangabe', value: 'für 1.500 kWh pro Jahr' },
+                                        { label: 'x Arbeitspreis pro kWh', value: '27,60 Ct pro kWh', highlight: false  },
+                                        { label: '= Arbeitspreis pgesamt', value: '414,00 € pro Jahr' },
+                                        { label: '+ Grundpreis', value: '190,80 € pro Jahr (15,90 € pro Monat)' },
+                                        { label: '= Gesamtpreis im ersten Jahr ohne Bonus', value: '604,80 € pro Jahr' , highlight: true   },
+                                        { label: 'Durchschnitt pro Monat', value: '50,40 € pro Monat' , highlight: true   },
+                                        { label: '- Sofortbonus', value: '50,00 €' , highlight: false   },
+                                        { label: '- Verivox Winterprämie', value: '50,00 €' , highlight: false   },
+                                        { label: '- Neukundenbonus', value: '100,00 €' , highlight: false   },
+                                        { label: '= Gesamtpreis im ersten Jahr inkl. Bonus', value: '404,80 € pro Jahr' , highlight: true   },
+                                        { label: 'Durchschnitt pro Monat', value: '33,73 € pro Monat' , highlight: true   },
+                                        { label: 'Geschätzter Abschlag (monatliche Kontobelastung)', value: 'ca. 54,98 € pro Monat' , highlight: true   },
+                                        { label: 'Bruttopreise gültig seit', value: '19.12.2025'  }
                                     ]
                                 }
                             ]
@@ -2400,19 +2483,15 @@
                                 {
                                     title: '',
                                     items: [
-                                        { label: 'Ord­nun­gs­wid­rig­kei­ten-Rechts­schutz', value: 'gerichtlich und außergerichtlich, ohne Wartezeit, Summe unbegrenzt' },
-                                        { label: 'Scha­denser­satz-Rechts­schutz', value: 'nicht versichert' },
-                                        { label: 'Rechts­schutz im Ver­trags- und Sach­recht', value: 'gerichtlich und außergerichtlich, ohne Wartezeit, Summe unbegrenzt' },
-                                        { label: 'Straf-Rechts­schutz', value: 'ohne Wartezeit, Summe unbegrenzt' },
-                                        { label: 'Steu­er-Rechts­schutz vor Ge­rich­ten', value: 'nicht versichert' },
-                                        { label: 'Ver­wal­tun­gs­rechts­schutz für Wi­der­spruchs­ver­fah­ren', value: 'nicht versichert' },
-                                        { label: 'Ver­wal­tun­gs­rechts­schutz (ge­richt­lich)', value: 'ab vorgeschaltetem Widerspruchsverfahren, ohne Wartezeit, Summe unbegrenzt gerichtlich mitversichert' },
-                                        { label: 'So­zi­al­ge­richts­rechts­schutz für Wi­der­spruchs­ver­fah­ren', value: 'nicht versichert' },
-                                        { label: 'So­zi­al­ge­richts­rechts­schutz (ge­richt­lich)', value: 'ab vorgeschaltetem Widerspruchsverfahren, ohne Wartezeit, Summe unbegrenzt gerichtlich mitversichert' },
-                                        { label: 'Dis­zi­pli­nar- und Stan­des-Rechts­schutz', value: 'ohne Wartezeit, Summe unbegrenzt' },
-                                        { label: 'Beratung im Familien- und Erbrecht', value: 'ohne Wartezeit, versichert • Über die Beratung hinausgehende Tätigkeit 1.000 EUR. • Auch gerichtliche Auseinandersetzungen in erbrechtlichen Streitigkeiten bis 10.000 EUR pro Vertragslaufzeit. Wartezeit 12 Monate' },
-                                        { label: 'Gerichtliche Wahrnehmung für Erbrecht', value: 'Wartezeit 12 Monate, bis zu 10.000 EUR' },
-                                        { label: 'Rechtsschutz für Betreuungs- und Vorsogeverfügungen', value: 'ohne Wartezeit, versichert auch anwaltliche Tätigkeiten über eine Beratung hinaus bis 1.000 EUR' }
+                                        { label: 'Erstlaufzeit', value: '12 Monate' },
+                                        { label: 'Kündigungsfrist', value: '1 Monat' },
+                                        { label: 'Vertragsverlängerung', value: 'auf unbestimmte Zeit' },
+                                        { label: 'Eingeschränkte Preisgarantie', value: '12 Monate' },
+                                        { label: 'Abschläge', value: 'monatlich' },
+                                        { label: 'Kaution', value: 'keine' },
+                                        { label: 'Onlinetarif', value: 'ja' },
+                                        { label: 'AGB zum Tarif', value: '' },
+                                        { label: 'Informationen zu den Vertragsbedingungen', value: '' }
                                     ]
                                 }
                             ]
@@ -2421,12 +2500,24 @@
                             title: 'Energiequellen',
                             subsections: [
                                 {
-                                    title: '',
+                                    title: 'Energiequellen zu Ihrem Tarif',
                                     items: [
-                                        { label: 'Ar­beits­rechts­schutz', value: 'Wartezeit 3 Monate, Summe unbegrenzt Die Wartezeit entfällt bei einem lückenlosen Übergang von einem Vorversicherer. auch Aufhebungsvereinbarungen bis 5.000 EUR. Beratung bei arbeitsrechtlichen Angelegenheiten: je Beratung bis 250 EUR, max. 500 EUR je Kalenderjahr' },
-                                        { label: 'Ar­beits­rechts­schutz bei angedrohter Kündigung mit Versicherungsfall', value: 'Wartezeit 3 Monate, Summe unbegrenzt Die Wartezeit entfällt bei einem lückenlosen Übergang von einem Vorversicherer. auch Aufhebungsvereinbarungen bis 5.000 EUR. Beratung bei arbeitsrechtlichen Angelegenheiten: je Beratung bis 250 EUR, max. 500 EUR je Kalenderjahr' },
-                                        { label: 'Opferrechtsschutz', value: 'gerichtlich, ohne Wartezeit, Summe unbegrenzt auch die Tätigkeit eines Rechtsanwaltes im Ermittlungs- und Nebenklageverfahren, sowie im Rahmen des Täter-Opferausgleiches, • auch Anti-Stalking Rechtsschutz; • auch außergerichtlich' },
-                                        { label: 'Rechts­schutz für Auf­he­bun­gs­ver­trä­ge', value: 'Wartezeit 3 Monate, Summe unbegrenzt Die Wartezeit entfällt bei einem lückenlosen Übergang von einem Vorversicherer. auch Aufhebungsvereinbarungen bis 5.000 EUR. Beratung bei arbeitsrechtlichen Angelegenheiten: je Beratung bis 250 EUR, max. 500 EUR je Kalenderjahr'}
+                                        { label: 'Regenerativ', value: '49 %' },
+                                        { label: 'Regenerativ (EEG gefördert)', value: '51 %' },
+                                        { label: 'Radioaktiver Abfall', value: '0 g/kWh' },
+                                        { label: 'RCO2-Emissionen', value: '0 g/kWh'}
+                                    ]
+                                },
+                                {
+                                    title: 'Bundesdeutscher Durchschnitt zum Vergleich (2024)',
+                                    items: [
+                                        { label: 'Regenerativ', value: '11,4 %' },
+                                        { label: 'sonstige fossile Energieträger', value: '1,5 %' },
+                                        { label: 'Kohle', value: '22,8 %' },
+                                        { label: 'Erdgas', value: '13,4 %'},
+                                        { label: 'Regenerativ (EEG gefördert)', value: '50,9 %' },
+                                        { label: 'Radioaktiver Abfall', value: '0 g/kWh' },
+                                        { label: 'CO2-Emissionen', value: '298 g/kWh'}
                                     ]
                                 }
                             ]
@@ -2435,23 +2526,26 @@
                             title: 'Anbieter / Bewertung',
                             subsections: [
                                 {
-                                    title: '',
+                                    title: 'Anbieter',
                                     items: [
-                                        { label: 'Ver­si­cher­te Fahr­zeu­ge', value: 'Alle auf den Versicherungsnehmer zugelassenen motorgetriebene Land-, Wasser- und Luftfahrzeuge sowie deren Anhänger Der Versicherungsschutz erstreckt sich auch auf die Wahrnehmung rechtlicher Interessen als Mieter oder Pächter von Garagen und Kraftfahrzeug-Abstellplätzen.' },
-                                        { label: 'Fahr­zeu­ge voll­jäh­ri­ger Kin­der', value: 'versichert (gemäß Familiendefinition)' },
-                                        { label: 'Ord­nun­gs­wid­rig­kei­ten-Rechts­schutz', value: 'gerichtlich und außergerichtlich, ohne Wartezeit, Summe unbegrenzt Auch Mitversicherung eines Firmen-Pkw' },
-                                        { label: 'Scha­denser­satz-Rechts­schutz', value: 'ohne Wartezeit, Summe unbegrenzt' },
-                                        { label: 'Rechts­schutz im Ver­trags- und Sach­recht', value: 'gerichtlich und außergerichtlich, ohne Wartezeit, Summe unbegrenzt' },
-                                        { label: 'Straf-Rechts­schutz', value: 'ohne Wartezeit, Summe unbegrenzt' },
-                                        { label: 'Steu­er-Rechts­schutz vor Ge­rich­ten', value: 'gerichtlich, ohne Wartezeit, Summe unbegrenzt auch die Tätigkeit eines Rechtsanwaltes im Ermittlungs- und Nebenklageverfahren, sowie im Rahmen des Täter-Opferausgleiches auch außergerichtlich' },
-                                        { label: 'Ver­wal­tun­gs­rechts­schutz für Wi­der­spruchs­ver­fah­ren', value: 'gerichtlich, ohne Wartezeit, Summe unbegrenz' },
-                                        { label: 'Ver­wal­tun­gs­rechts­schutz (ge­richt­lich)', value: 'gerichtlich, ohne Wartezeit, Summe unbegrenzt' },
-                                        { label: 'So­zi­al­ge­richts­rechts­schutz für Wi­der­spruchs­ver­fah­ren', value: 'nicht versichert' },
-                                        { label: 'So­zi­al­ge­richts­rechts­schutz (ge­richt­lich)', value: 'ab vorgeschaltetem Widerspruchsverfahren, ohne Wartezeit, Summe unbegrenzt gerichtlich mitversichert' },
-                                        { label: 'Opferrechtsschutz', value: 'gerichtlich, ohne Wartezeit, Summe unbegrenzt auch die Tätigkeit eines Rechtsanwaltes im Ermittlungs- und Nebenklageverfahren, sowie im Rahmen des Täter-Opferausgleiches auch außergerichtlich' },
-                                        { label: 'Dis­zi­pli­nar- und Stan­des- Rechts­schutz', value: 'ohne Wartezeit, Summe unbegrenzt' },
-                                        { label: 'Ver­stoß gegen Halte- und Park­vor­schrif­ten', value: 'versichert Erst ab drohender Eintragung in das Fahreignungsregister (FAER)' },
-                                        { label: 'Ver­si­che­run­gs­schutz bei Ver­ur­tei­lung wegen vor­sätz­li­cher Straf­ta­ten im Ver­kehrs­be­reich', value: 'nicht versichert' }
+                                        { label: 'Vattenfall Europe Sales GmbH, Amerigo-Vespucci-Platz 2, 20457 Hamburg', value: '' }
+                                    ]
+                                },
+                                {
+                                    title: 'Verifizierte Kundenbewertungen für Vattenfall',
+                                    items: [
+                                        { label: '4,4 von 5 Sternen', value: '' },
+                                        { label: 'Insgesamt 5.942 Bewertungen', value: '' }
+                                    ]
+                                },
+                                {
+                                    title: 'Unternehmenskennzahlen',
+                                    items: [
+                                        { label: 'Eigentümer', value: 'Vattenfall Europe AG' },
+                                        { label: 'Gründung', value: '04.07.2002' },
+                                        { label: 'Mitarbeiter 2021', value: '19.500' },
+                                        { label: 'Kunden 2021', value: 'k.a.' },
+                                        { label: 'Umsatz 2021', value: '180.118 Mio. SEK (ca. 18,01 Mrd. €)' }
                                     ]
                                 }
                             ]
@@ -2462,58 +2556,12 @@
                                 {
                                     title: '',
                                     items: [
-                                        { label: 'Ordnungswidrigkeiten-Rechts­schutz', value: 'gerichtlich und außergerichtlich, ohne Wartezeit, Summe unbegrenzt' },
-                                        { label: 'Verwaltungs-Rechts­schutz', value: 'gerichtlich, Wartezeit 3 Monate, Summe unbegrenzt Die Wartezeit entfällt bei einem lückenlosen Übergang von einem Vorversicherer' },
-                                        { label: 'Steuerrechtsschutz', value: 'ab vorgeschaltetem Widerspruchsverfahren, ohne Wartezeit, Summe unbegrenzt • gerichtlich mitversichert • Einspruchsverfahren mitversichert' },
-                                        { label: 'Strafrechtschutz', value: 'ohne Wartezeit, Summe unbegrenzt' }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            title: 'Versicherte Kosten',
-                            subsections: [
-                                {
-                                    title: '',
-                                    items: [
-                                        { label: 'Freie Rechts­an­walts­wahl in Höhe der ge­setz­li­chen Ver­gü­tung', value: 'ja' },
-                                        { label: 'Kor­re­spon­denz­an­walt', value: 'bis zu 100 % d. Kosten Bei Rechtsschutzfällen im Inland: Alternativ werden die Reisekosten und Abwesenheitsgelder des zuständigen Anwalts übernommen.' },
-                                        { label: 'Kos­ten der Ge­gen­sei­te', value: 'bis zu 100 % d. Kosten' },
-                                        { label: 'Kosten und Gebühren für Zeugen und Sachverständige', value: 'bis zu 100 % d. Kosten' },
-                                        { label: 'Öf­fent­lich be­stell­te Sach­ver­stän­di­ge', value: 'bis zu 100 % d. Kosten' },
-                                        { label: 'Rei­se­kos­ten zum deut­schen Ge­richt', value: 'bis zu 100 % d. Kosten Sofern mehr als 100 km vom Gericht entfernt, alternativ die Kosten für einen Verkehrsanwalt' },
-                                        { label: 'Rei­se­kos­ten zum aus­län­di­schen Ge­richt', value: 'bis zu 100 % d. Kosten Sofern mehr als 100 km vom Gericht entfernt, alternativ die Kosten für einen Verkehrsanwalt' }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            title: 'Spezial-Straf-Rechtsschutz',
-                            subsections: [
-                                {
-                                    title: '',
-                                    items: [
-                                        { label: 'Spe­zi­al-Straf-Rechts­schutz', value: 'bis zu 300.000 EUR' },
-                                        { label: 'De­ckun­gs­sum­me Spe­zi­al-Straf-Rechts­schutz', value: 'nicht versichert' },
-                                        { label: 'Straf­kau­ti­on', value: 'volle Kostenübernahme Kaution Weltweit bis zu einem Jahr Aufenthalt im Ausland bis 1.000.000 EUR. Auch erweiterte Strafkaution bis 300.000 EUR. Einschließlich Versicherungsschutz trotz Vorsatz bei Erledigung im Wege eines Strafbefehls' },
-                                        { label: 'Erweiterte Straf­kau­ti­on', value: 'bis zu 300.000 EUR' },
-                                        { label: 'Privater Bereich', value: 'bis zu 300.000 EUR' },
-                                        { label: 'Beschäftigung als Arbeitnehmer', value: 'bis zu 300.000 EUR' },
-                                        { label: 'Ehrenamt', value: 'nicht versichert' },
-                                        { label: 'Verdeckte Ermittlungen', value: 'nicht versichert' },
-                                        { label: 'Be­son­der­heit Spe­zi­al-Straf-Rechts­schutz', value: 'versichert Es wird eine angemessene Vergütung nach dem RVG z.B. für Reisekosten des Rechtsanwaltes; Nebenklagekosten und Sachverständigenkosten übernommen.' },
-                                        { label: 'Gegnerische Anwaltskosten im Falle des Unterliegens', value: 'bis zu 100 % d. Kosten' }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            title: 'Beratungsdokumentation',
-                            subsections: [
-                                {
-                                    title: '',
-                                    items: [
-                                        { label: 'Beratungsdokumentation', value: 'noch einfügen' }
+                                        { label: 'Ihr Verbrauch', value: '1.500 kWh/Jahr' },
+                                        { label: 'Arbeitspreis', value: '27,60 Ct/Jahr' },
+                                        { label: 'Grundpreis', value: '190,80 €/Jahr' },
+                                        { label: 'Sofortbonus', value: '50,00 €' },
+                                        { label: 'Verivox Winterprämie', value: '50,00 €' },
+                                        { label: 'Neukundenbonus', value: '100,00 €' }
                                     ]
                                 }
                             ]
@@ -2544,6 +2592,7 @@
         </div>
       `;
     }
+    // ===== VX DS form components =====
     function createFormFieldHTML(field) {
         const labelHTML = `
     <label for="${field.id}">
@@ -2564,20 +2613,25 @@
       </div>
     `;
         } else if (field.type === 'input') {
+            // 🔑 Prüfe ob Feld conditional ist
+            const conditionalAttr = field.conditional
+                ? `data-conditional='${JSON.stringify(field.conditional)}'`
+                : '';
+            const conditionalStyle = field.conditional
+                ? `style="display: none;"`
+                : '';
             return `
-      <div class="form-group">
-        ${labelHTML}
-        <ds-input
-          id="${field.id}"
-          type="${field.inputType || 'text'}"
-          placeholder="${field.placeholder || ''}"
-          ${field.step ? `step="${field.step}"` : ''}
-          ${field.required ? 'required' : ''}
-          ${field.disabled ? 'disabled' : ''}
-          ${field.valid ? 'valid' : ''}
-        ></ds-input>
-      </div>
-    `;
+    <div class="form-group" ${conditionalStyle}>
+      ${labelHTML}
+      <ds-input
+        id="${field.id}"
+        type="${field.inputType || 'text'}"
+        placeholder="${field.placeholder || ''}"
+        ${field.required ? 'required' : ''}
+        ${conditionalAttr}
+      ></ds-input>
+    </div>
+  `;
         } else if (field.type === 'date') {
             return `
       <div class="form-group">
@@ -2596,9 +2650,32 @@
         </ds-select-text>
       </div>
     `;
+        } else if (field.type === 'button-group') {
+            // 🔑 EINFACH: Nur wie ein Select, aber als Radio-Gruppe
+            const radioHTML = field.options
+                .map(opt => `
+      <div class="radio-wrapper">
+        <label>
+          <input
+            type="radio"
+            name="${field.id}"
+            value="${opt.value}"
+          />
+          <span>${opt.label}</span>
+        </label>
+      </div>
+    `)
+                .join('');
+            return `
+    <div class="form-group">
+      ${labelHTML}
+      <div class="radio-group-wrapper">
+        ${radioHTML}
+      </div>
+    </div>
+  `;
         }
     }
-
     // ===== STORAGE MANAGER =====
     class StorageManager {
         static saveFormData(data) {
@@ -2689,7 +2766,6 @@
             }
         }
     }
-
     // ===== NEUER CODE FÜR LAYOUT-RENDERING =====
     function renderFormFields(stepConfig) {
         let html = '';
@@ -2717,7 +2793,6 @@
         }
         return html;
     }
-
     // ===== CHECKOUT STEPS RENDERER =====
     class CheckoutStepsRenderer {
         constructor(config) {
@@ -2744,7 +2819,6 @@
                 card.innerHTML = `
     <ds-ribbon variant="success" position="top-left">
       <span class="icn icn-check-circle-filled" aria-hidden="true"></span>
-
     </ds-ribbon>
     <div class="step-header">
       <div class="step-header-left">
@@ -2769,7 +2843,6 @@
                 </ul><br>
 Es gelten die <a class="inlinelink" href="#" onclick="openTestModeModal(); return false;" data-auto-event-observed="true">Widerrufsbelehrung</a> und die <a class="inlinelink" href="#" onclick="openTestModeModal(); return false;" data-auto-event-observed="true">Datenschutzerklärung</a>. Zudem gelten die <a class="inlinelink" href="#" onclick="openTestModeModal(); return false;" data-auto-event-observed="true">Datenschutzinformationen</a> der Verivox GmbH.<br>
 Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an den Anbieter zur weiteren Bearbeitung, welches ich <a class="inlinelink" href="#" onclick="openTestModeModal(); return false;" data-auto-event-observed="true">hier</a> einsehen kann.
-
            </span>
           </div>
           <div class="consent-checkbox-wrapper">
@@ -2780,7 +2853,7 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
               aria-describedby="offer-text">
             </ds-checkbox>
             <div class="consent-text" id="offer-text">
-                Ja, ich möchte kostenlos von Verivox über deren jeweilige <a class="inlinelink" href="#" onclick="openTestModeModal(); return false;" data-auto-event-observed="true">Angebote</a> und im geringen Umfang auch über besondere Angebote ausgewählter Partner mittels personalisierter elektronischer Post (z.B. E-Mail, SMS, WhatsApp) informiert werden. Ich stimme der aggregierten Nutzungsanalyse (Öffnungen und Klicks) zu. Diese Einwilligung kann ich jederzeit mit Wirkung für die Zukunft widerrufen (E-Mail an service@verivox.de) ohne dass hierfür andere als Übermittlungskosten nach Basistarif entstehen. Weitere Infos hier: <a class="inlinelink" href="#" onclick="openTestModeModal(); return false;" data-auto-event-observed="true">Datenschutzhinweise</a>
+                Ja, ich möchte kostenlos von Verivox über deren jeweilige <a class="inlinelink" href="#" onclick="openTestModeModal(); return false;" data-auto-event-observed="true">Angebote</a> und im geringen Umfang auch über besondere Angebote ausgewählter Partner mittels personalisierter elektronischer Post (z.B. E-Mail, SMS, WhatsApp) informiert werden. Ich stimme der aggregierten Nutzungsanalyse (Öffnungen und Klicks) zu. Diese Einwilligung kann ich jederzeit mit Wirkung für die Zukunft widerrufen (E-Mail an service@verivox.de) ohne dass hierfür andere als Übermittlungskosten nach Basistarif entstehen. Weitere Infos hier: <a class="inlinelink" href="#" onclick="openTestModeModal(); return false;" data-auto-event-observed="true">Datenschutzhinweise</a>
             </div>
           </div>
           <div class="newsletter-error" id="offer-error"></div>
@@ -2796,9 +2869,6 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
           <div class="newsletter-error" id="newsletter-error"></div>
         </div>
         </div>
-
-
-
       </form>
     </div>
     <div class="step-completed-content">
@@ -2828,6 +2898,8 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
         <div class="step-header-right" id="header-action-${step.id}"></div>
       </div>
       <div class="step-content">
+
+
         <form class="step-form" id="form-${step.id}" novalidate>
           ${renderFormFields(step)}
           <div class="form-actions">
@@ -2871,63 +2943,448 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
             return rows.join('');
         }
     }
-    // ===== CONDITIONAL FIELD VISIBILITY =====
+    // ===== ✅ VERBESSERTE CONDITIONAL FIELD MANAGER KLASSE =====
     class ConditionalFieldManager {
         constructor(checkoutManager) {
             this.checkoutManager = checkoutManager;
+            this.config = checkoutManager.config;
+            this.properties = {
+                moveTypeWechsel: 'Ich möchte den Anbieter/Tarif wechseln',
+                moveTypeUmzug: 'Ich ziehe um',
+                defaultReason: 'Ich möchte den Anbieter/Tarif wechseln',
+                defaultCancelOption: 'Automatische Kündigung durch neuen Anbieter',
+                defaultCancelDateOption: 'Nächstmöglicher Termin'
+            };
+
+// 🔑 NEU: Alert-Konfiguration mit Positionierung
+            this.alertConfig = {
+                umzugKuendigung: {
+                    id: 'alert-umzug-kuendigung',
+                    variant: 'info',
+                    heading: '',
+                    message: 'Bitte denken Sie daran, Ihren alten Vertrag am bisherigen Wohnort zu kündigen.',
+                    position: 'before', // 'before' = vor dem Feld
+                    targetField: 'moveDate', // Wird vor moveDate eingefügt
+                    condition: (reason) => reason === this.properties.moveTypeUmzug
+                },
+
+                marktlokationsID: {
+                    id: 'alert-marktlokations-id',
+                    variant: 'info',
+                    heading: 'Schnellere Bearbeitung',
+                    message: 'Mithilfe der Marktlokations-ID kann Ihr neuer Anbieter den Wechsel effizienter für Sie durchführen! Die Marktlokations-ID finden Sie z.B. auf Ihrer letzten Jahresendabrechnung.',
+                    position: 'before', // 'after' = nach dem Feld
+                    targetField: 'marktlokationsID',
+                    condition: (reason) => reason === this.properties.moveTypeWechsel
+                },
+
+                automatischeKuendigung: {
+                    id: 'alert-automatische-kuendigung-special',
+                    variant: 'infog',
+                    heading: '',
+                    message: 'Achtung: Sie müssen Ihren <strong>Tarif selbst kündigen</strong>, wenn Sie beim Tarifwechsel Ihr <strong>Sonderkündigungsrecht</strong> (z.B. Preiserhöhung) nutzen oder wenn die <strong>Kündigungsfrist</strong> in <strong>weniger als 4 Wochen</strong> ausläuft.',
+                    position: 'after',
+                    targetField: 'cancelOption',
+                    condition: (reason, cancelOption) =>
+                        reason === this.properties.moveTypeWechsel &&
+                        cancelOption === 'Automatische Kündigung durch neuen Anbieter',
+                    allowHTML: true // 🔑 HTML erlauben für <strong> Tags
+                },
+
+                selbstKuendigung: {
+                    id: 'alert-selbst-kuendigung-info',
+                    variant: 'info',
+                    heading: 'Hinweis',
+                    message: 'Bitte beachten Sie, dass es gegebenenfalls zu Verzögerungen beim Wechsel kommen kann, sollte Ihre Kündigung des aktuellen Vertrages nicht rechtzeitig erfolgen.',
+                    position: 'after',
+                    targetField: 'cancelOption',
+                    condition: (reason, cancelOption) =>
+                        reason === this.properties.moveTypeWechsel &&
+                        cancelOption === 'Ich möchte selbst kündigen'
+                }
+            };
+
             this.init();
         }
 
         init() {
+            this.setInitialState();
             this.setupConditionalFields();
-            console.log('✓ ConditionalFieldManager initialized');
+            console.log('✅ ConditionalFieldManager initialized');
+        }
+
+        setInitialState() {
+            console.log('🔄 Setting initial state...');
+
+            setTimeout(() => {
+                const reasonRadio = document.querySelector(
+                    `input[name="reason"][value="${this.properties.defaultReason}"]`
+                );
+                if (reasonRadio && !reasonRadio.checked) {
+                    reasonRadio.checked = true;
+                    reasonRadio.dispatchEvent(new Event('change', { bubbles: true }));
+                    console.log('✅ Default reason set: Wechsel');
+                }
+
+                const cancelOptionSelect = document.getElementById('cancelOption');
+                if (cancelOptionSelect) {
+                    cancelOptionSelect.value = this.properties.defaultCancelOption;
+                    cancelOptionSelect.dispatchEvent(new Event('change', { bubbles: true }));
+                    console.log('✅ Default cancel option set: Automatische Kündigung');
+                }
+
+                const cancelDateOptionSelect = document.getElementById('cancelDateOption');
+                if (cancelDateOptionSelect) {
+                    cancelDateOptionSelect.value = this.properties.defaultCancelDateOption;
+                    cancelDateOptionSelect.dispatchEvent(new Event('change', { bubbles: true }));
+                    console.log('✅ Default cancel date option set: Nächstmöglicher Termin');
+                }
+
+                this.updateReasonDependencies();
+                this.updateCancelOptionDependencies();
+                this.updatePaymentMethodDependencies();  // 🔑 NEU
+
+                console.log('✅ Initial state setup complete');
+            }, 100);
         }
 
         setupConditionalFields() {
-            // Step 8: additionalExplication abhängig von additionalTrue
-            const additionalTrueSelect = document.getElementById('additionalTrue');
-            const additionalExplicationField = document.getElementById('additionalExplication')?.closest('.form-group');
+            // ===== STEP 2: REASON RADIO GROUP =====
+            const reasonRadios = document.querySelectorAll('input[name="reason"]');
 
-            if (additionalTrueSelect && additionalExplicationField) {
-                // Initial state setzen
-                this.updateAdditionalExplicationVisibility(additionalTrueSelect, additionalExplicationField);
+            if (reasonRadios.length > 0) {
+                reasonRadios.forEach(radio => {
+                    radio.addEventListener('change', () => {
+                        this.updateReasonDependencies();
+                    });
+                });
+                console.log('✅ Step 2: Reason fields set up');
+            }
 
-                // Event Listener für Änderungen
-                additionalTrueSelect.addEventListener('change', (e) => {
-                    this.updateAdditionalExplicationVisibility(additionalTrueSelect, additionalExplicationField);
+            // ===== STEP 2: CANCEL OPTION SELECT =====
+            const cancelOptionSelect = document.getElementById('cancelOption');
+            if (cancelOptionSelect) {
+                cancelOptionSelect.addEventListener('change', () => {
+                    this.updateCancelOptionDependencies();
+                });
+                console.log('✅ Step 2: Cancel Option fields set up');
+            }
+
+            // ===== STEP 2: CANCEL DATE OPTION SELECT =====
+            const cancelDateOptionSelect = document.getElementById('cancelDateOption');
+            if (cancelDateOptionSelect) {
+                cancelDateOptionSelect.addEventListener('change', () => {
+                    this.updateCancelOptionDependencies();
+                });
+                console.log('✅ cancelDateOption listener set up');
+            }
+
+            // 🔑 NEU: STEP 3: PAYMENT METHOD SELECT =====
+            const paymentMethodSelect = document.getElementById('paymentMethod');
+            if (paymentMethodSelect) {
+                paymentMethodSelect.addEventListener('change', () => {
+                    this.updatePaymentMethodDependencies();
+                });
+                console.log('✅ Step 3: Payment Method fields set up');
+            }
+        }
+
+        // ===== METHOD 1: Update Reason Dependencies =====
+        updateReasonDependencies() {
+            const selectedReason = document.querySelector('input[name="reason"]:checked')?.value;
+
+            console.log(`📍 Reason selected: ${selectedReason}`);
+
+            const wechselFields = [
+                'currentProvider',
+                'clientNumber',
+                'marktlokationsID',
+                'cancelOption',
+                'cancelDateOption',
+                'cancelDate',
+                'contractEnd'
+            ];
+
+            const umzugFields = [
+                'moveDate'
+            ];
+
+            const bothOptionsFields = [
+                'meterNumber'
+            ];
+
+            if (selectedReason === this.properties.moveTypeWechsel) {
+                wechselFields.forEach(fieldId => this.showField(fieldId));
+                bothOptionsFields.forEach(fieldId => this.showField(fieldId));
+                umzugFields.forEach(fieldId => this.hideField(fieldId));
+                console.log('✅ WECHSEL mode');
+            }
+            else if (selectedReason === this.properties.moveTypeUmzug) {
+                umzugFields.forEach(fieldId => this.showField(fieldId));
+                bothOptionsFields.forEach(fieldId => this.showField(fieldId));
+                wechselFields.forEach(fieldId => this.hideField(fieldId));
+                console.log('✅ UMZUG mode');
+            }
+            else {
+                wechselFields.forEach(fieldId => this.hideField(fieldId));
+                umzugFields.forEach(fieldId => this.hideField(fieldId));
+                bothOptionsFields.forEach(fieldId => this.hideField(fieldId));
+                console.log('✅ NO SELECTION');
+            }
+
+            // 🔑 NEU: Update Alerts
+            const cancelOptionSelect = document.getElementById('cancelOption');
+            const selectedCancelOption = cancelOptionSelect?.value;
+            this.updateAlertsStep2(selectedReason, selectedCancelOption);
+
+            this.updateCancelOptionDependencies();
+        }
+
+        // ===== METHOD 2: Update Cancel Option Dependencies =====
+        updateCancelOptionDependencies() {
+            const selectedReason = document.querySelector('input[name="reason"]:checked')?.value;
+            const cancelOptionSelect = document.getElementById('cancelOption');
+            const selectedCancelOption = cancelOptionSelect?.value;
+
+            console.log(`📍 Reason: ${selectedReason}, Cancel Option: ${selectedCancelOption}`);
+
+            const cancelOptionFieldMap = {
+                'Automatische Kündigung durch neuen Anbieter': [
+                    'cancelDateOption'
+                ],
+
+                'Ich möchte selbst kündigen': [
+                    'contractEnd'
+                ],
+
+                'Ich habe bereits gekündigt': [
+                    'contractEnd'
+                ],
+
+                'Ich wurde von meinem Anbieter gekündigt': [
+                    'contractEnd'
+                ]
+            };
+
+            const allCancelFields = [
+                'cancelDateOption',
+                'cancelDate',
+                'contractEnd'
+            ];
+
+            if (selectedReason === this.properties.moveTypeWechsel && selectedCancelOption) {
+                const fieldsToShow = cancelOptionFieldMap[selectedCancelOption] || [];
+
+                fieldsToShow.forEach(fieldId => {
+                    this.showField(fieldId);
                 });
 
-                console.log('✓ Conditional field visibility set up for Step 8');
+                const fieldsToHide = allCancelFields.filter(
+                    fieldId => !fieldsToShow.includes(fieldId) && fieldId !== 'cancelDate'
+                );
+                fieldsToHide.forEach(fieldId => {
+                    this.hideField(fieldId);
+                });
+
+                this.updateCancelDateVisibility(selectedCancelOption);
+
+                // 🔑 NEU: Update Alerts mit selectedCancelOption
+                this.updateAlertsStep2(selectedReason, selectedCancelOption);
+
+                console.log(`✅ Cancel Option "${selectedCancelOption}" - Felder angezeigt:`, fieldsToShow);
+            }
+            else {
+                allCancelFields.forEach(fieldId => this.hideField(fieldId));
+                console.log('✅ Cancel Date Fields verborgen');
             }
         }
 
-        updateAdditionalExplicationVisibility(selectElement, fieldElement) {
-            const value = selectElement.value;
+        // ===== METHOD 3: Update Cancel Date Visibility =====
+        updateCancelDateVisibility(selectedCancelOption) {
+            const cancelDateOptionSelect = document.getElementById('cancelDateOption');
+            const selectedCancelDateOption = cancelDateOptionSelect?.value;
 
-            // Zeige das Feld nur wenn "ja" ausgewählt ist
-            if (value === 'ja') {
-                fieldElement.style.display = 'flex';
-                fieldElement.style.animation = 'slideDown 0.3s ease';
-                // Mache das Feld required wenn sichtbar
-                const input = fieldElement.querySelector('ds-input');
-                if (input) input.setAttribute('required', 'required');
-                console.log('✓ additionalExplication Feld angezeigt');
-            } else {
-                fieldElement.style.display = 'none';
-                // Entferne required wenn versteckt
-                const input = fieldElement.querySelector('ds-input');
-                if (input) {
-                    input.removeAttribute('required');
-                    input.value = ''; // Clear the value
+            console.log(`📍 cancelDateOption: ${selectedCancelDateOption}`);
+
+            if (selectedCancelOption === 'Automatische Kündigung durch neuen Anbieter') {
+                if (selectedCancelDateOption === 'Wechseltermin angeben') {
+                    this.showField('cancelDate');
+                    console.log('✅ cancelDate angezeigt (Wechseltermin angeben)');
+                } else if (selectedCancelDateOption === 'Nächstmöglicher Termin') {
+                    this.hideField('cancelDate');
+                    console.log('✅ cancelDate verborgen (Nächstmöglicher Termin)');
                 }
-                console.log('✓ additionalExplication Feld verborgen');
             }
+        }
+
+        // 🔑 NEU: METHOD 4: Update Payment Method Dependencies =====
+        updatePaymentMethodDependencies() {
+            const paymentMethodSelect = document.getElementById('paymentMethod');
+            const selectedPaymentMethod = paymentMethodSelect?.value;
+
+            console.log(`📍 Payment Method: ${selectedPaymentMethod}`);
+
+            const bankingFields = ['iban', 'bank'];
+
+            // 🔑 Nur wenn "Bankeinzug" ausgewählt ist
+            if (selectedPaymentMethod === 'Bankeinzug') {
+                bankingFields.forEach(fieldId => this.showField(fieldId));
+                console.log('✅ Banking fields angezeigt (Bankeinzug ausgewählt)');
+            }
+            // Verstecke bei allen anderen Optionen
+            else {
+                bankingFields.forEach(fieldId => this.hideField(fieldId));
+                console.log('✅ Banking fields verborgen');
+            }
+        }
+
+        // 🔑 NEU: METHOD: Update Alerts mit flexibler Positionierung =====
+        updateAlertsStep2(selectedReason, selectedCancelOption) {
+            console.log(`📍 Updating alerts: Reason=${selectedReason}, CancelOption=${selectedCancelOption}`);
+
+            // Entferne alle existierenden Alerts zuerst
+            this.removeAllAlerts();
+
+            // Bestimme welche Alerts angezeigt werden sollen
+            const alertsToShow = [];
+
+            // 🔑 Gehe durch alle Alert-Konfigurationen
+            Object.values(this.alertConfig).forEach(alert => {
+                // Prüfe ob Alert angezeigt werden soll
+                const shouldShow = alert.condition(selectedReason, selectedCancelOption);
+
+                if (shouldShow) {
+                    alertsToShow.push(alert);
+                    console.log(`✅ Alert hinzufügt: ${alert.id}`);
+                }
+            });
+
+            // Rendere die Alerts
+            alertsToShow.forEach(alert => {
+                this.renderAlert(alert);
+            });
+
+            console.log(`✅ ${alertsToShow.length} Alert(s) angezeigt`);
+        }
+
+// 🔑 NEU: Methode zum Rendern eines einzelnen Alerts =====
+        renderAlert(alert) {
+            // Finde das Ziel-Feld
+            const targetField = document.getElementById(alert.targetField);
+            if (!targetField) {
+                console.warn(`⚠️ Target field not found: ${alert.targetField}`);
+                return;
+            }
+
+            // Finde die Form-Group (parent div)
+            const formGroup = targetField.closest('.form-group');
+            if (!formGroup) {
+                console.warn(`⚠️ Form group not found for: ${alert.targetField}`);
+                return;
+            }
+
+            // Erstelle den Alert HTML
+            const alertHTML = `
+    <ds-alert id="${alert.id}" variant="${alert.variant}" show-close-action="false" style="margin: var(--ds-spacing-s) 0;">
+      <div style="margin: 0; font-size: var(--ds-font-size-m);">
+        ${alert.allowHTML ? alert.message : `<p>${alert.message}</p>`}
+      </div>
+    </ds-alert>
+  `;
+
+            // Einfügen vor oder nach dem Feld
+            if (alert.position === 'before') {
+                formGroup.insertAdjacentHTML('beforebegin', alertHTML);
+                console.log(`✅ Alert "${alert.id}" eingefügt VORHER`);
+            } else if (alert.position === 'after') {
+                formGroup.insertAdjacentHTML('afterend', alertHTML);
+                console.log(`✅ Alert "${alert.id}" eingefügt NACHHER`);
+            }
+        }
+
+// 🔑 NEU: Methode zum Entfernen aller Alerts =====
+        removeAllAlerts() {
+            Object.values(this.alertConfig).forEach(alert => {
+                const existingAlert = document.getElementById(alert.id);
+                if (existingAlert) {
+                    existingAlert.remove();
+                    console.log(`✅ Alert entfernt: ${alert.id}`);
+                }
+            });
+        }
+
+        // ===== HELPER: Get Field Config from JSON =====
+        getFieldConfig(fieldId) {
+            for (let step of this.config.steps) {
+                const fieldConfig = step.fields.find(f => f.id === fieldId);
+                if (fieldConfig) {
+                    return fieldConfig;
+                }
+            }
+            console.warn(`⚠️ Field config not found for: ${fieldId}`);
+            return null;
+        }
+
+        // ===== HELPER: Show Field =====
+        showField(fieldId) {
+            const field = document.getElementById(fieldId)?.closest('.form-group');
+            if (!field) {
+                console.warn(`⚠️ Field DOM element not found: ${fieldId}`);
+                return;
+            }
+
+            const fieldConfig = this.getFieldConfig(fieldId);
+            const shouldBeRequired = fieldConfig?.required ?? false;
+
+            field.style.display = 'flex';
+            field.style.animation = 'slideDown 0.3s ease';
+
+            const input = field.querySelector('ds-input, ds-select');
+            if (input) {
+                if (shouldBeRequired) {
+                    input.setAttribute('required', 'required');
+                    console.log(`  ✓ Field "${fieldId}" shown with required=true`);
+                } else {
+                    input.removeAttribute('required');
+                    console.log(`  ✓ Field "${fieldId}" shown with required=false`);
+                }
+            }
+        }
+
+        // ===== HELPER: Hide Field =====
+        hideField(fieldId) {
+            const field = document.getElementById(fieldId)?.closest('.form-group');
+            if (!field) {
+                console.warn(`⚠️ Field DOM element not found: ${fieldId}`);
+                return;
+            }
+
+            field.style.display = 'none';
+
+            const input = field.querySelector('ds-input, ds-select');
+            if (input) {
+                input.removeAttribute('required');
+                input.value = '';
+                console.log(`  ✓ Field "${fieldId}" hidden & cleared`);
+            }
+        }
+
+        // ===== HELPER: Check if visible =====
+        isFieldVisible(fieldId) {
+            const field = document.getElementById(fieldId)?.closest('.form-group');
+            return field && field.style.display !== 'none';
         }
     }
-
     // ===== DATE FORMATTER =====
     class DateFormatter {
         constructor() {
+            // 🔑 NEU: Array mit allen Feld-IDs, die formatiert werden sollen
+            this.dateFieldIds = [
+                'birthdate',
+                'moveDate',
+                'cancelDate',
+                'contractEnd'
+            ];
             this.init();
         }
 
@@ -2937,24 +3394,28 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
         }
 
         setupDateFormatting() {
-            const dateInput = document.getElementById('startIns')
+            // 🔑 NEU: Loop durch alle Felder
+            this.dateFieldIds.forEach(fieldId => {
+                const dateInput = document.getElementById(fieldId);
 
-            if (dateInput) {
-                // Event Listener für Input
-                dateInput.addEventListener('input', (e) => {
-                    this.formatDate(dateInput);
-                });
-                // Event Listener für Paste
-                dateInput.addEventListener('paste', (e) => {
-                    setTimeout(() => {
+                if (dateInput) {
+                    // Event Listener für Input
+                    dateInput.addEventListener('input', (e) => {
                         this.formatDate(dateInput);
-                    }, 10);
-                });
+                    });
 
-                console.log('✓ Date formatting set up');
+                    // Event Listener für Paste
+                    dateInput.addEventListener('paste', (e) => {
+                        setTimeout(() => {
+                            this.formatDate(dateInput);
+                        }, 10);
+                    });
 
-            }
-
+                    console.log(`✓ Date formatting set up for: ${fieldId}`);
+                } else {
+                    console.warn(`⚠️ Date field not found: ${fieldId}`);
+                }
+            });
         }
 
         formatDate(inputElement) {
@@ -2977,57 +3438,45 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
             }
 
             inputElement.value = formatted;
-            console.log(`Date formatted: ${formatted}`);
+            console.log(`✓ Date formatted (${inputElement.id}): ${formatted}`);
         }
     }
-
     // ===== IBAN FORMATTER =====
     class IBANFormatter {
         constructor() {
             this.init();
         }
-
         init() {
             this.setupIBANFormatting();
             console.log('✓ IBANFormatter initialized');
         }
-
         setupIBANFormatting() {
             const ibanInput = document.getElementById('iban');
-
             if (ibanInput) {
                 // Event Listener für Input
                 ibanInput.addEventListener('input', (e) => {
                     this.formatIBAN(ibanInput);
                 });
-
                 // Event Listener für Paste
                 ibanInput.addEventListener('paste', (e) => {
                     setTimeout(() => {
                         this.formatIBAN(ibanInput);
                     }, 10);
                 });
-
                 console.log('✓ IBAN formatting set up');
             }
         }
-
         formatIBAN(inputElement) {
             // Entferne alle Leerzeichen und konvertiere zu Großbuchstaben
             let value = inputElement.value.replace(/\s+/g, '').toUpperCase();
-
             // Nur erlaubte Zeichen (Buchstaben und Zahlen)
             value = value.replace(/[^A-Z0-9]/g, '');
-
             // Begrenze auf max. 34 Zeichen (längste IBAN)
             value = value.substring(0, 34);
-
             // Formatiere mit Leerzeichen nach jeder 4. Stelle
             const formatted = value.replace(/(.{4})/g, '$1 ').trim();
-
             // Setze den formatierten Wert
             inputElement.value = formatted;
-
             console.log(`IBAN formatted: ${formatted}`);
         }
     }
@@ -3067,7 +3516,7 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
                     <div class="price-section">
                         <div class="price-value">
                             <div class="price-amount">
-                                <span>${this.config.price.toFixed(2)}</span>
+                                <span>${formatPrice(this.config.price)}</span>
                                 <span class="price-currency">€</span>
                             </div>
                         </div>
@@ -3174,7 +3623,7 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
         <div class="price-section">
             <div class="price-value">
                 <div class="price-amount">
-                    <span>${this.config.price.toFixed(2)}</span>
+                    <span>${formatPrice(this.config.price)}</span>
                     <span class="price-currency">€</span>
                 </div>
             </div>
@@ -3261,26 +3710,22 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
             console.log('Drawer closed');
         }
     }
-
     // ===== TOAST NOTIFICATION MANAGER =====
     class ToastManager {
         constructor() {
             this.toastContainer = null;
             this.init();
         }
-
         init() {
             this.createToastContainer();
             console.log('✓ ToastManager initialized');
         }
-
         createToastContainer() {
             // Prüfe ob Container bereits existiert
             if (document.getElementById('toast-container')) {
                 this.toastContainer = document.getElementById('toast-container');
                 return;
             }
-
             // Erstelle Container
             const container = document.createElement('div');
             container.id = 'toast-container';
@@ -3291,7 +3736,6 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
       right: 0;
       display: flex;
       z-index: 3000;
-
       justify-content: center;
       flex-direction: column;
       gap: var(--ds-spacing-xxs, 8px);
@@ -3302,12 +3746,10 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
             document.body.appendChild(container);
             this.toastContainer = container;
         }
-
         showToast(message, type = 'info', duration = 5000) {
             const toast = document.createElement('div');
             const toastId = `toast-${Date.now()}`;
             toast.id = toastId;
-
             // Style basierend auf Typ
             const styles = {
                 info: {
@@ -3332,9 +3774,7 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
                     color: 'var(--ds-font-text-danger-regular, #C62828)'
                 }
             };
-
             const style = styles[type] || styles.info;
-
             toast.style.cssText = `
       padding: var(--ds-spacing-xs, 16px);
       border-radius: var(--ds-radius-xl, 5px);
@@ -3350,7 +3790,6 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
       border-left: ${style.borderLeft};
       color: ${style.color};
     `;
-
             // Icon basierend auf Typ
             const icons = {
                 info: 'icn-info-circle-filled',
@@ -3358,9 +3797,7 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
                 warning: 'icn-warning-filled',
                 danger: 'icn-close-circle-filled'
             };
-
             const icon = icons[type] || icons.info;
-
             toast.innerHTML = `
       <span class="icn ${icon}" aria-hidden="true" style="flex-shrink: 0; font-size: 20px;"></span>
       <span style="flex: 1;">${message}</span>
@@ -3377,23 +3814,18 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
         <span class="icn icn-close-outlined" aria-hidden="true"></span>
       </button>
     `;
-
             // Close Button
             toast.querySelector('.toast-close').addEventListener('click', () => {
                 this.removeToast(toastId);
             });
-
             // Füge zum Container hinzu
             this.toastContainer.appendChild(toast);
-
             // Auto-Remove nach duration
             setTimeout(() => {
                 this.removeToast(toastId);
             }, duration);
-
             console.log(`✓ Toast shown: ${type} - ${message}`);
         }
-
         removeToast(toastId) {
             const toast = document.getElementById(toastId);
             if (toast) {
@@ -3404,7 +3836,6 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
             }
         }
     }
-
     // ===== CHECKOUT MANAGER =====
     class CheckoutManager {
         constructor(config) {
@@ -3424,11 +3855,14 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
                     this.dsStepsElement = document.getElementById('checkoutSteps');
                     this.loadFromStorage();
                     this.attachEventListeners();
+                    this.setupRadioGroups()
                     this.setupRealTimeValidation();
                     this.updateProgressBar();
                     this.updateStorageStatus();
                     this.attachDsStepsEventListeners();
                     this.refreshAllStepStates();
+                    // 🔑 NEU: Conditional Fields
+                    new ConditionalFieldManager(this);
                 });
             }
         }
@@ -3449,10 +3883,8 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
                 this.formData = TEST_DATA;
                 console.log('✓ Loaded TEST DATA:', this.formData);
                 this.completedSteps = Object.keys(TEST_DATA).map(k => parseInt(k));
-
                 // 🔑 NEU: Check ob alle Steps gefüllt
                 const allCompleted = this.completedSteps.length === (this.config.steps.length - 1);
-
                 if (allCompleted) {
                     console.log('✓ All steps completed - REVIEW MODE (keine Steps editierbar)');
                     // 🔑 Setze currentStep auf null = Review-Mode
@@ -3462,7 +3894,6 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
                     console.log(`⏭️ Starting at next step: ${Math.min(...this.completedSteps) + 1}`);
                     this.currentStep = Math.min(...this.completedSteps) + 1 || 1;
                 }
-
                 if (this.currentStep && this.currentStep > this.config.steps.length) {
                     this.currentStep = this.config.steps.length;
                 }
@@ -3480,14 +3911,27 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
                 console.log('✓ Loaded checkout state from storage, currentStep:', this.currentStep, 'completedSteps:', this.completedSteps);
             }
             // Populate Formularfelder mit Daten
-            Object.entries(this.formData).forEach(([stepId, data]) => {
-                Object.entries(data).forEach(([fieldId, value]) => {
-                    const field = document.getElementById(fieldId);
-                    if (field) {
-                        field.value = value;
-                    }
+            // 🔑 BESSER: Verzögerte Befüllung nach DOM-Rendering
+            setTimeout(() => {
+                Object.entries(this.formData).forEach(([stepId, data]) => {
+                    Object.entries(data).forEach(([fieldId, value]) => {
+                        // ===== RADIOS =====
+                        // 🔑 RADIOS: Wie normale HTML Inputs
+                        const radio = document.querySelector(`input[name="${fieldId}"][value="${value}"]`);
+                        if (radio) {
+                            radio.checked = true;
+                            console.log(`✓ Radio loaded: ${fieldId} = ${value}`);
+                            return;
+                        }
+                        // ===== NORMALE INPUTS & SELECTS =====
+                        const field = document.getElementById(fieldId);
+                        if (field) {
+                            field.value = value;
+                            console.log(`✓ Field loaded: ${fieldId} = ${value}`);
+                        }
+                    });
                 });
-            });
+            }, 100); // Gib dem DOM Zeit zum Rendern
         }
         updateStorageStatus() {
             const hasData = StorageManager.hasData() || USE_TEST_DATA;
@@ -3513,6 +3957,30 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
                     this.validateField(select);
                     this.autoSaveFormData();
                 });
+            });
+        }
+        setupRadioGroups() {
+            // 🔑 Einfach: Change Event auf normalen Radio Inputs
+            document.addEventListener('change', (e) => {
+                if (e.target.type === 'radio') {
+                    console.log(`✓ Radio changed: ${e.target.name} = ${e.target.value}`);
+                    this.autoSaveFormData();
+                }
+            });
+        }
+        syncRadiosWithHiddenInputs() {
+            // 🔑 Für alle Radio-Gruppen
+            const radioGroups = document.querySelectorAll('.radio-group-wrapper');
+            radioGroups.forEach(wrapper => {
+                const hiddenInput = wrapper.nextElementSibling;
+                if (!hiddenInput || hiddenInput.tagName !== 'INPUT') return;
+                const fieldId = hiddenInput.id;
+                const checkedRadio = wrapper.querySelector('ds-radio[checked]');
+                if (checkedRadio) {
+                    // 🔑 Setze Hidden Input Value wenn Radio checked ist
+                    hiddenInput.value = checkedRadio.value;
+                    console.log(`✓ Synced Radio: ${fieldId} = ${checkedRadio.value}`);
+                }
             });
         }
         validateField(input) {
@@ -3600,14 +4068,57 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
                 });
             });
         }
+        /*
+  collectFormData(step) {
+    const form = document.querySelector`#form-${step}`);
+    if (!form) return;
+    const inputs = form.querySelectorAll('ds-input, ds-select');
+    const data = {};
+    inputs.forEach(input => {
+      data[input.id] = input.value;
+    });
+    // 🔑 NEU: Sammle auch Hidden Inputs (von Radio-Gruppen)
+  const hiddenInputs = form.querySelectorAll('input[type="hidden"]');
+  hiddenInputs.forEach(input => {
+    data[input.id] = input.value;
+  });
+  // 🔑 NEU: Sammle auch Radios direkt
+  const radios = form.querySelectorAll('ds-radio');
+  radios.forEach(radio => {
+    if (radio.checked) {
+      const name = radio.getAttribute('name');
+      if (name) {
+        data[name] = radio.value;
+      }
+    }
+  });
+    const checkbox = form.querySelector('ds-checkbox');
+    if (checkbox) {
+      data['newsletter_consent'] = checkbox.checked;
+    }
+    if (!this.formData[step]) {
+      this.formData[step] = {};
+    }
+    this.formData[step] = data;
+  }
+  */
         collectFormData(step) {
             const form = document.querySelector(`#form-${step}`);
             if (!form) return;
-            const inputs = form.querySelectorAll('ds-input, ds-select');
             const data = {};
+            // DS-Input & DS-Select
+            const inputs = form.querySelectorAll('ds-input, ds-select');
             inputs.forEach(input => {
                 data[input.id] = input.value;
             });
+            // 🔑 RADIOS: Wie normale HTML Inputs behandeln
+            const radios = form.querySelectorAll('input[type="radio"]');
+            radios.forEach(radio => {
+                if (radio.checked) {
+                    data[radio.name] = radio.value;
+                }
+            });
+            // Checkbox
             const checkbox = form.querySelector('ds-checkbox');
             if (checkbox) {
                 data['newsletter_consent'] = checkbox.checked;
@@ -3615,32 +4126,27 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
             if (!this.formData[step]) {
                 this.formData[step] = {};
             }
-            this.formData[step] = data;
+            this.formData[step] = { ...this.formData[step], ...data };
         }
         validateStep(step) {
             const form = document.querySelector(`#form-${step}`);
             if (!form) return false;
             const stepConfig = this.config.steps.find(s => s.id === step);
-
             if (stepConfig.isConsentStep) {
                 const checkbox = form.querySelector('ds-checkbox');
                 const errorContainer = document.getElementById('newsletter-error');
-
                 if (!checkbox || !checkbox.checked) {
                     // Zeige Error Message unter dem Text
                     if (errorContainer) {
                         errorContainer.textContent = 'Bitte bestätigen Sie die Bedingungen, um den Kauf abzuschließen';
                         errorContainer.style.display = 'block';
                     }
-
                     checkbox.invalid = true;
                     console.log('✗ Checkbox validation failed');
-
                     // Scroll zur Checkbox
                     setTimeout(() => {
                         checkbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }, 100);
-
                     return false;
                 } else {
                     // Entferne error message wenn checked
@@ -3652,7 +4158,6 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
                 }
                 return true;
             }
-
             let isValid = true;
             form.querySelectorAll('ds-input[required], ds-select[required]').forEach(input => {
                 const fieldId = input.id;
@@ -3665,11 +4170,9 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
                     input.invalid = false;
                 }
             });
-
             if (!isValid) {
                 console.log('Bitte füllen Sie alle erforderlichen Felder korrekt aus.');
             }
-
             return isValid;
         }
         // ===== KORREKTE METHODE MIT COMPLETED-TRACKING =====
@@ -3684,9 +4187,7 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
             for (let i = 1; i <= this.config.steps.length; i++) {
                 const card = document.querySelector(`[data-step="${i}"]`);
                 if (!card) continue;
-
                 const headerActionEl = document.getElementById(`header-action-${i}`);
-
                 // ✅ FÜGE HIER HINZU: Spezialbehandlung für Step 4
                 if (i === 4) {
                     card.classList.add('editing'); // ✅ Immer editing
@@ -3696,17 +4197,13 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
                     console.log(`✏️  Step ${i}: EDITING (Consent Step - always editing)`);
                     continue; // ✅ Springe zum nächsten Step
                 }
-
                 if (i === this.currentStep) {
                     // Dieser Step wird gerade bearbeitet
                     card.classList.add('editing');
-
                     // Leere den "Ändern" Button bei editing
                     if (headerActionEl) {
                         headerActionEl.innerHTML = '';
                     }
-
-
                     console.log(`✏️  Step ${i}: EDITING`);
                 } else if (this.completedSteps.includes(i)) {
                     // Steps die bereits besucht wurden BLEIBEN COMPLETED
@@ -3721,32 +4218,25 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
             }
             this.attachChangeLinks();
         }
-
         // ===== NEUER CODE: Validierung vor Step 4 =====
         validateAllStepsCompleted() {
             console.log('🔍 Validating all steps before Step 4...');
-
             const requiredSteps = [1, 2, 3]; // Alle Steps außer Step 4
             const missingSteps = requiredSteps.filter(step => !this.completedSteps.includes(step));
-
             if (missingSteps.length > 0) {
                 console.log('❌ Missing steps:', missingSteps);
-
                 // Finde den ERSTEN nicht-completed Step
                 const firstMissingStep = missingSteps[0];
-
                 // Setze diesen Step auf "editing"
                 this.currentStep = firstMissingStep;
                 this.dsStepsElement.current = firstMissingStep;
                 this.saveCheckoutState();
                 this.refreshAllStepStates();
-
                 // Scroll zu diesem Step mit Highlight-Effekt
                 setTimeout(() => {
                     const targetCard = document.querySelector(`[data-step="${firstMissingStep}"]`);
                     if (targetCard) {
                         targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
                         // Visueller Highlight-Effekt (optional)
                         targetCard.style.transition = 'all 0.3s ease';
                         targetCard.style.boxShadow = '0 0 20px rgba(255, 86, 0, 0.5)';
@@ -3755,23 +4245,18 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
                         }, 2000);
                     }
                 }, 300);
-
                 // Zeige User-freundliche Nachricht
                 this.showValidationError(firstMissingStep);
                 return false;
             }
-
             console.log('✅ All required steps completed!');
             return true;
         }
-
         showValidationError(step) {
             const stepConfig = this.config.steps.find(s => s.id === step);
             const message = `Bitte füllen Sie zuerst Schritt ${step} aus: "${stepConfig.heading}"`;
-
             // Option 1: Browser-Alert (einfach)
             // alert(message);
-
             // Option 2: Toast-Nachricht (wenn verfügbar)
             //this.showToast(message, 'warning');
             // Nutze Toast statt Alert
@@ -3780,10 +4265,8 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
             } else {
                 alert(message); // Fallback
             }
-
             console.log(message);
         }
-
         handleNext(step) {
             console.log(`handleNext: step ${step}`);
             this.collectFormData(step);
@@ -3850,7 +4333,6 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
             if (headerActionEl && stepCard && !stepCard.classList.contains('editing')) {
                 headerActionEl.innerHTML = `<button class="change-button-link icn-pencil-filled" data-step="${step}">Ändern</button>`;
             } else if (headerActionEl) {
-                // Leere den Button wenn Step editing ist
                 headerActionEl.innerHTML = '';
             }
 
@@ -3862,28 +4344,95 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
                 }
                 return;
             }
-            stepConfig.completedDataFields.forEach(field => {
+
+            // 🔑 NEU: Filtere Felder die einen Wert haben
+            const fieldsWithValues = stepConfig.completedDataFields.filter(field => {
                 if (field.valueIds) {
+                    // Multi-Feld: Prüfe ob mindestens ein Wert existiert
                     const values = field.valueIds.map(id => data[id]);
-                    const transformedValue = field.transform ? field.transform(values) : values.join(' ');
-                    const el = document.getElementById(`completed-${field.valueIds[0]}`);
-                    if (el) el.textContent = transformedValue;
+                    return values.some(val => val && val.toString().trim() !== '');
                 } else {
-                    let value = data[field.valueId] || '';
-                    if (field.transform) {
-                        value = field.transform(value);
-                    }
-                    const el = document.getElementById(`completed-${field.valueId}`);
-                    if (el) el.textContent = value;
+                    // Single-Feld: Prüfe ob Wert existiert
+                    return data[field.valueId] && data[field.valueId].toString().trim() !== '';
                 }
             });
-            const subtitleEl = document.getElementById(`subtitle-${step}`);
-            if (subtitleEl && stepConfig.completedDataFields[0]) {
-                const firstField = stepConfig.completedDataFields[0];
-                let value = data[firstField.valueId] || '';
-                if (firstField.transform) {
-                    value = firstField.transform(value);
+
+            console.log(`✅ Step ${step}: ${fieldsWithValues.length} Felder mit Werten gefunden`);
+
+            // Renderiere nur Felder mit Werten
+            const rows = [];
+            for (let i = 0; i < fieldsWithValues.length; i += 2) {
+                let rowHTML = '<div class="completed-data-row">';
+
+                const field1 = fieldsWithValues[i];
+                let value1 = '';
+
+                if (field1.valueIds) {
+                    const values = field1.valueIds.map(id => data[id]);
+                    value1 = field1.transform ? field1.transform(values) : values.join(' ');
+                } else {
+                    value1 = data[field1.valueId] || '';
+                    if (field1.transform) {
+                        value1 = field1.transform(value1);
+                    }
                 }
+
+                rowHTML += `
+      <div class="data-item">
+        <span class="data-label">${field1.label}</span>
+        <span class="data-value">${value1}</span>
+      </div>
+    `;
+
+                // Zweites Feld (wenn vorhanden)
+                if (fieldsWithValues[i + 1]) {
+                    const field2 = fieldsWithValues[i + 1];
+                    let value2 = '';
+
+                    if (field2.valueIds) {
+                        const values = field2.valueIds.map(id => data[id]);
+                        value2 = field2.transform ? field2.transform(values) : values.join(' ');
+                    } else {
+                        value2 = data[field2.valueId] || '';
+                        if (field2.transform) {
+                            value2 = field2.transform(value2);
+                        }
+                    }
+
+                    rowHTML += `
+        <div class="data-item">
+          <span class="data-label">${field2.label}</span>
+          <span class="data-value">${value2}</span>
+        </div>
+      `;
+                }
+
+                rowHTML += '</div>';
+                rows.push(rowHTML);
+            }
+
+            // Update DOM mit gefilterten Rows
+            const completedDataEl = stepCard.querySelector('.completed-data');
+            if (completedDataEl) {
+                completedDataEl.innerHTML = rows.join('');
+            }
+
+            // Update Subtitle mit erstem Feld (falls vorhanden)
+            const subtitleEl = document.getElementById(`subtitle-${step}`);
+            if (subtitleEl && fieldsWithValues.length > 0) {
+                const firstField = fieldsWithValues[0];
+                let value = '';
+
+                if (firstField.valueIds) {
+                    const values = firstField.valueIds.map(id => data[id]);
+                    value = firstField.transform ? firstField.transform(values) : values.join(' ');
+                } else {
+                    value = data[firstField.valueId] || '';
+                    if (firstField.transform) {
+                        value = firstField.transform(value);
+                    }
+                }
+
                 subtitleEl.textContent = value;
             }
         }
@@ -3899,69 +4448,56 @@ Ich bevollmächtige Verivox zur Übermittlung des Angebots in meinem Namen an de
         completeCheckout() {
             console.log('Checkout completed');
             document.getElementById('checkoutSteps-container').style.display = 'none';
-
-
         }
-
-
     }
     // ===== INITIALIZATION =====
     console.log('Page loaded, initializing...');
-
     let checkoutManager;
     let toastManager; // 🔑 NEU
-
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
             initTestModeModal();
-
             toastManager = new ToastManager(); // 🔑 HIER
             window.toastManager = toastManager; // 🔑 Global machen
             const stickyFooter = new StickyCheckoutFooter();
             const stepsManager = new StepsManager(CHECKOUT_CONFIG.steps);
             const stepsRenderer = new CheckoutStepsRenderer(CHECKOUT_CONFIG.steps);
-
             checkoutManager = new CheckoutManager(CHECKOUT_CONFIG);
             window.checkoutManager = checkoutManager;
-
             const drawerManager = new DrawerManager();
             const conditionalFieldManager = new ConditionalFieldManager(checkoutManager);
             const ibanFormatter = new IBANFormatter();
             const dateFormatter = new DateFormatter();
             checkoutManager.init();
-
             CHECKOUT_CONFIG.providers.forEach((config, index) => {
                 new ProviderBoxManager(config, index);
             });
-
             console.log(`✓ ${CHECKOUT_CONFIG.providers.length} Provider Box(es) loaded`);
         });
     } else {
         initTestModeModal();
-
         toastManager = new ToastManager(); // 🔑 HIER
         window.toastManager = toastManager; // 🔑 Global machen
         const stickyFooter = new StickyCheckoutFooter();
         const stepsManager = new StepsManager(CHECKOUT_CONFIG.steps);
         const stepsRenderer = new CheckoutStepsRenderer(CHECKOUT_CONFIG.steps);
-
         checkoutManager = new CheckoutManager(CHECKOUT_CONFIG);
         window.checkoutManager = checkoutManager;
-
         const drawerManager = new DrawerManager();
         const conditionalFieldManager = new ConditionalFieldManager(checkoutManager);
         const ibanFormatter = new IBANFormatter();
         const dateFormatter = new DateFormatter();
         checkoutManager.init();
-
         CHECKOUT_CONFIG.providers.forEach((config, index) => {
             new ProviderBoxManager(config, index);
         });
-
         console.log(`✓ ${CHECKOUT_CONFIG.providers.length} Provider Box(es) loaded`);
     }
 </script>
+
 <!-- Load "prototype-sidecar.js". Used for common improvements for any prototype, e.g. protection and font loading -->
 <script src="prototype-sidecar.js"></script>
+
+
 </body>
 </html>
