@@ -11603,39 +11603,64 @@
             }
         }
         loadFromStorage() {
-            // Zuerst Test-Daten laden wenn USE_TEST_DATA aktiviert ist
+            // 🔑 NEU: Zuerst Test-Daten laden wenn USE_TEST_DATA aktiviert ist
             if (USE_TEST_DATA) {
                 this.formData = TEST_DATA;
-                console.log('✓ Loaded TEST DATA:', this.formData);
-                // Setze auch die completedSteps für die vorbefüllten Steps
+                console.log('✅ Loaded TEST DATA (Cache ignored!):', this.formData);
                 this.completedSteps = Object.keys(TEST_DATA).map(k => parseInt(k));
-                this.currentStep = Math.min(...this.completedSteps) + 1 || 1;
-                // Falls letzter Step, stay auf dem letzten
-                if (this.currentStep > this.config.steps.length) {
+
+                // 🔑 Check ob alle Steps gefüllt
+                const allCompleted = this.completedSteps.length === (this.config.steps.length - 1);
+                if (allCompleted) {
+                    console.log('✅ All steps completed - REVIEW MODE');
+                    this.currentStep = null;
+                } else {
+                    console.log(`⏭️ Starting at next step: ${Math.min(...this.completedSteps) + 1}`);
+                    this.currentStep = Math.min(...this.completedSteps) + 1 || 1;
+                }
+
+                if (this.currentStep && this.currentStep > this.config.steps.length) {
                     this.currentStep = this.config.steps.length;
                 }
+
+                // 🔑 RETURN HIER - Cache wird NICHT geladen!
+                return;
             }
-            // Dann von Storage laden (überschreibt Test-Daten wenn vorhanden)
+
+            // 🔑 NUR wenn USE_TEST_DATA false ist, Cache laden
             const savedData = StorageManager.loadFormData();
             const savedState = StorageManager.loadCheckoutState();
+
             if (savedData) {
                 this.formData = savedData;
-                console.log('✓ Loaded form data from storage:', this.formData);
+                console.log('✅ Loaded form data from cache:', this.formData);
             }
+
             if (savedState) {
                 this.currentStep = savedState.currentStep;
                 this.completedSteps = savedState.completedSteps || [];
-                console.log('✓ Loaded checkout state from storage, currentStep:', this.currentStep, 'completedSteps:', this.completedSteps);
+                console.log('✅ Loaded checkout state from cache, currentStep:', this.currentStep, 'completedSteps:', this.completedSteps);
             }
+
             // Populate Formularfelder mit Daten
-            Object.entries(this.formData).forEach(([stepId, data]) => {
-                Object.entries(data).forEach(([fieldId, value]) => {
-                    const field = document.getElementById(fieldId);
-                    if (field) {
-                        field.value = value;
-                    }
+            setTimeout(() => {
+                Object.entries(this.formData).forEach(([stepId, data]) => {
+                    Object.entries(data).forEach(([fieldId, value]) => {
+                        const radio = document.querySelector(`input[name="${fieldId}"][value="${value}"]`);
+                        if (radio) {
+                            radio.checked = true;
+                            console.log(`✅ Radio loaded: ${fieldId} = ${value}`);
+                            return;
+                        }
+
+                        const field = document.getElementById(fieldId);
+                        if (field) {
+                            field.value = value;
+                            console.log(`✅ Field loaded: ${fieldId} = ${value}`);
+                        }
+                    });
                 });
-            });
+            }, 100);
         }
         updateStorageStatus() {
             const hasData = StorageManager.hasData() || USE_TEST_DATA;
@@ -11949,6 +11974,9 @@
                 this.saveCheckoutState();
                 this.refreshAllStepStates();
                 setTimeout(() => {
+                    console.log(`⏳ Populating form after handleNext...`);
+                    this.populateFormFields(step + 1);
+
                     document.querySelector(`[data-step="${step + 1}"]`).scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }, 300);
                 this.stepStartTime = Date.now();
@@ -11977,9 +12005,109 @@
             this.saveCheckoutState();
             this.refreshAllStepStates();
             setTimeout(() => {
+                console.log(`⏳ Populating form after handleEdit...`);
+                this.populateFormFields(step);
                 document.querySelector(`[data-step="${step}"]`).scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 300);
             this.stepStartTime = Date.now();
+        }
+
+        // 🔑 NEU: Methode zum Befüllen von Formularfeldern
+        populateFormFields(step) {
+            const stepData = this.formData[step] || {};
+            console.log(`📍 Populating form fields for step ${step}:`, stepData);
+
+            // Finde das Formular
+            const form = document.querySelector(`#form-${step}`);
+            if (!form) {
+                console.error(`❌ FEHLER: Form not found for step ${step}`);
+                return;
+            }
+            console.log(`✅ Form found for step ${step}`);
+
+            // Zähle befüllte Felder
+            let populatedCount = 0;
+
+            // Befülle alle Felder mit den gespeicherten Daten
+            Object.entries(stepData).forEach(([fieldId, value]) => {
+                console.log(`\n🔍 Trying to populate: ${fieldId} = ${value}`);
+
+                // 🔑 1. RADIO-BUTTONS (HTML)
+                // 🔑 WICHTIG: querySelector statt getElementById
+                let element = form.querySelector(`input[name="${fieldId}"][value="${value}"]`);
+                if (element) {
+                    element.checked = true;
+                    element.dispatchEvent(new Event('change', { bubbles: true }));
+                    console.log(`✅ [RADIO] populated: ${fieldId}`);
+                    populatedCount++;
+                    return;
+                }
+
+                // 🔑 2. HTML INPUT / SELECT / CHECKBOX
+                // 🔑 WICHTIG: querySelector statt getElementById
+                element = form.querySelector(`#${fieldId}`);
+                if (element) {
+                    if (element.tagName === 'INPUT' && element.type === 'text') {
+                        element.value = value;
+                        element.dispatchEvent(new Event('input', { bubbles: true }));
+                        element.dispatchEvent(new Event('change', { bubbles: true }));
+                        console.log(`✅ [HTML INPUT] populated: ${fieldId}`);
+                        populatedCount++;
+                        return;
+                    }
+
+                    if (element.tagName === 'INPUT' && element.type === 'checkbox') {
+                        element.checked = value;
+                        element.dispatchEvent(new Event('change', { bubbles: true }));
+                        console.log(`✅ [HTML CHECKBOX] populated: ${fieldId}`);
+                        populatedCount++;
+                        return;
+                    }
+
+                    if (element.tagName === 'SELECT') {
+                        element.value = value;
+                        element.dispatchEvent(new Event('change', { bubbles: true }));
+                        console.log(`✅ [HTML SELECT] populated: ${fieldId}`);
+                        populatedCount++;
+                        return;
+                    }
+                }
+
+                // 🔑 3. DS-INPUT (Verivox Design System)
+                element = form.querySelector(`ds-input#${fieldId}`);
+                if (element) {
+                    element.value = value;
+                    element.dispatchEvent(new Event('input', { bubbles: true }));
+                    element.dispatchEvent(new Event('change', { bubbles: true }));
+                    console.log(`✅ [DS-INPUT] populated: ${fieldId}`);
+                    populatedCount++;
+                    return;
+                }
+
+                // 🔑 4. DS-SELECT (Verivox Design System)
+                element = form.querySelector(`ds-select#${fieldId}`);
+                if (element) {
+                    element.value = value;
+                    element.dispatchEvent(new Event('change', { bubbles: true }));
+                    console.log(`✅ [DS-SELECT] populated: ${fieldId}`);
+                    populatedCount++;
+                    return;
+                }
+
+                // 🔑 5. DS-CHECKBOX (Verivox Design System)
+                element = form.querySelector(`ds-checkbox#${fieldId}`);
+                if (element) {
+                    element.checked = value;
+                    element.dispatchEvent(new Event('change', { bubbles: true }));
+                    console.log(`✅ [DS-CHECKBOX] populated: ${fieldId}`);
+                    populatedCount++;
+                    return;
+                }
+
+                console.warn(`⚠️ [NOT FOUND] Element ${fieldId} not found in form`);
+            });
+
+            console.log(`\n✅ Form ${step} populated: ${populatedCount}/${Object.keys(stepData).length} fields`);
         }
         saveCheckoutState() {
             StorageManager.saveCheckoutState({
@@ -12110,8 +12238,10 @@
     }
 </script>
 
+
 <!-- Load "prototype-sidecar.js". Used for common improvements for any prototype, e.g. protection and font loading -->
 <script src="prototype-sidecar.js"></script>
+
 
 </body>
 </html>
